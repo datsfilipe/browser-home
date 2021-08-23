@@ -11,6 +11,7 @@ const MenuContainer = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 
   &:hover ${MenuContentContainer} {
     display: block;
@@ -18,9 +19,7 @@ const MenuContainer = styled.div`
 `;
 
 const Span = styled.span`
-  padding: 0 60px 0 60px;
-  margin-left: 0;
-  margin-right: auto;
+  padding: 0 100px;
   font: 18px 'Poppins', sans-serif;
   color: ${props => props.theme.dark.secondary};
 `;

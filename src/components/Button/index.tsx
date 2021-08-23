@@ -1,11 +1,11 @@
 import { ButtonHTMLAttributes } from "react";
-import { ButtonContainer, SearchBarButtonContainer } from "./style";
+import { ButtonContainer } from "./style";
+
+import Image from 'next/image';
+import downArrowImg from '../../assets/down-arrow.svg';
 
 export function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
-  if (props.className) return (
-    <SearchBarButtonContainer {...props} />
-  );
-  if (!props.className) return (
-      <ButtonContainer {...props} />
-  );
+  return (
+    <ButtonContainer {...props} />
+  )
 }

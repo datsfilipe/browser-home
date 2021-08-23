@@ -1,12 +1,11 @@
 import { MenuContent } from "../MenuContent/index";
 import { MenuContainer, Span } from './style';
-import { Button } from '../Button/index';
+import { HTMLAttributes } from "react";
 
-export function Menu() {
+export function Menu(props: HTMLAttributes<HTMLDivElement>) {
   return (
     <MenuContainer>
-      <Button type="button"></Button>
-      <Span>Social</Span>
+      <Span>{props.title}</Span>
       <MenuContent />
     </MenuContainer>
   )

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const MenuContentContainer = styled.div`
   width: 100%;
-  margin-top: 170px;
+  margin-top: 120px;
 
   display: none;
   position: absolute;
@@ -11,7 +11,7 @@ const MenuContentContainer = styled.div`
 
   z-index: 1;
   border: none;
-  border-radius: 15px;
+  border-radius: 20px;
 `;
 
 const Ul = styled.ul`
@@ -25,6 +25,10 @@ const Ul = styled.ul`
   justify-content: center;
 
   list-style: none;
+`;
+
+const Li = styled.li`
+
 `;
 
 export { MenuContentContainer, Ul };
