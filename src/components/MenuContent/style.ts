@@ -2,12 +2,12 @@ import styled from "styled-components";
 
 const MenuContentContainer = styled.div`
   width: 100%;
-  margin-top: 120px;
+  margin-top: 140px;
 
   display: none;
   position: absolute;
 
-  background-color: ${props => props.theme.dark.border};
+  background-color: ${props => props.theme.dark.primary};
 
   z-index: 1;
   border: none;
@@ -28,7 +28,24 @@ const Ul = styled.ul`
 `;
 
 const Li = styled.li`
+  color: ${props => props.theme.dark.text};
+  font: 16px 'Poppins', sans-serif;
+  font-weight: 500;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
 `;
 
-export { MenuContentContainer, Ul };
+const ButtonAdd = styled.button`
+  background-color: transparent;
+  display: flex;
+
+  width: 32px;
+  border-radius: 15px;
+  border: none;
+`;
+
+export { MenuContentContainer, Ul, Li, ButtonAdd };

@@ -17,7 +17,7 @@ const Input = styled.input`
   padding-left: 8px;
 
   font: 22px 'Roboto', sans-serif;
-  color: ${props => props.theme.dark.text}
+  color: ${props => props.theme.dark.input_text}
 `;
 
 export { SearchBarContainer, Input };

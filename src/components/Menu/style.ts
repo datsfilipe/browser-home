@@ -7,21 +7,18 @@ const MenuContainer = styled.div`
   border-radius: 15px;
 
   position: relative;
-  background-color: ${props => props.theme.dark.border};
+  background-color: ${props => props.theme.dark.primary};
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  &:hover ${MenuContentContainer} {
-    display: block;
-  }
 `;
 
 const Span = styled.span`
   padding: 0 100px;
   font: 18px 'Poppins', sans-serif;
-  color: ${props => props.theme.dark.secondary};
+  font-weight: 700;
+  color: ${props => props.theme.dark.text};
 `;
 
 export {Span, MenuContainer};

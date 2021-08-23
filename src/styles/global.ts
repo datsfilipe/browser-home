@@ -11,5 +11,10 @@ export default createGlobalStyle`
     background: ${props => props.theme.dark.background};
     color: ${props => props.theme.dark.text};
     font-family: Roboto;
+
+    /* class for applying styles to toggle menu */
+    .show {
+      display: block;
+    }
   }
 `;

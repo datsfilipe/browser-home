@@ -43,4 +43,10 @@ const Categories = styled.div`
   gap: 8px;
 `;
 
-export { Container, Form, Categories, Main, Aside };
+const Footer = styled.footer`
+  a {
+    display: block;
+  }
+`;
+
+export { Container, Form, Categories, Main, Aside, Footer };
