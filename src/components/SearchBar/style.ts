@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SearchBarContainer = styled.div`
+const SearchBarContainer = styled.form`
   height: 55px;
   display: flex;
   justify-content: center;

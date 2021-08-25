@@ -14,13 +14,6 @@ const Aside = styled.aside`
   }
 `;
 
-const Form = styled.form`
-  display: flex;
-
-  flex: 1;
-  flex-direction: column;
-`;
-
 const Main = styled.main`
   align-self: center;
   display: flex;
@@ -49,4 +42,4 @@ const Footer = styled.footer`
   }
 `;
 
-export { Container, Form, Categories, Main, Aside, Footer };
+export { Container, Categories, Main, Aside, Footer };

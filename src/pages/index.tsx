@@ -4,9 +4,9 @@ import Image from 'next/image';
 
 import supportImg from '../assets/support-img.svg';
 
-import {Container, Main, Form, Categories, Aside, Footer} from '../styles/home';
-import { SearchBar } from '../components/SearchBar/index';
+import {Container, Main, Categories, Aside, Footer} from '../styles/home';
 import { Menu } from '../components/Menu/index';
+import { Form } from '../components/Form/index';
 
 const Home: NextPage = () => {
 
@@ -19,14 +19,12 @@ const Home: NextPage = () => {
         <Aside>
           <Image src={supportImg} alt="Imagem de Banner" />
         </Aside>
-        <Form>
-          <SearchBar />
-          <Categories>
-            <Menu title="Social"  />
-            <Menu title="Study"  />
-            <Menu title="Games"  />
-          </Categories>
-        </Form>
+        <Form />
+        <Categories>
+          <Menu title="Social"  />
+          <Menu title="Study"  />
+          <Menu title="Games"  />
+        </Categories>
       </Main>
       {/* <Footer>
       <a href="https://iconscout.com/icons/plus" target="_blank" rel="noreferrer">Plus Icon</a> on <a href="https://iconscout.com">Iconscout</a>
