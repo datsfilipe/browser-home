@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { MenuContentContainer } from "../MenuContent/style";
 
 const MenuContainer = styled.div`
   margin-top: 4rem;
