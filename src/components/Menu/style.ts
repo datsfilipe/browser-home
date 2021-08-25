@@ -11,6 +11,15 @@ const MenuContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  &:active {
+    background-color: #8c75ff;
+    -webkit-box-shadow: inset 0px 0px 5px #6c5ac7;
+    -moz-box-shadow: inset 0px 0px 5px #6c5ac7;
+    box-shadow: inset 0px 0px 5px #6c5ac7;
+    outline: none;
+    transition: all 300ms;
+  }
 `;
 
 const Span = styled.span`
