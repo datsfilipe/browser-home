@@ -46,6 +46,12 @@ const ButtonAdd = styled.button`
   width: 32px;
   border-radius: 15px;
   border: none;
+
+  img {
+    svg {
+      color: ${props => props.theme.dark.text};
+    }
+  }
 `;
 
 export { MenuContentContainer, Ul, Li, ButtonAdd };

@@ -21,6 +21,10 @@ const Main = styled.main`
   width: 80vw;
   height: 100vh;
 
+  #container {
+    flex: 1;
+  }
+
   textarea {
     color: ${props => props.theme.dark.text}
   }
