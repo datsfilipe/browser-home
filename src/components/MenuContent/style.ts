@@ -12,6 +12,8 @@ const MenuContentContainer = styled.div`
   z-index: 1;
   border: none;
   border-radius: 20px;
+
+  box-shadow: 2px 2px 1px 2px rgba(65, 65, 77, 0.2);
 `;
 
 const Ul = styled.ul`
@@ -46,12 +48,21 @@ const ButtonAdd = styled.button`
   width: 32px;
   border-radius: 15px;
   border: none;
-
-  img {
-    svg {
-      color: ${props => props.theme.dark.text};
-    }
-  }
 `;
 
-export { MenuContentContainer, Ul, Li, ButtonAdd };
+const Input = styled.input`
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: ${props => props.theme.dark.text};
+  font: 16px 'Poppins', sans-serif;
+  font-weight: 500;
+`;
+
+const Form = styled.form`
+  width: 100%;
+  display: inline-flex;
+`;
+
+export { MenuContentContainer, Ul, Li, ButtonAdd, Input, Form };
