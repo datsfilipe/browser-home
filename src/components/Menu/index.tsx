@@ -6,6 +6,7 @@ import { ClickAwayListener } from '@material-ui/core';
 
 export function Menu(props: HTMLAttributes<HTMLDivElement>) {
   const [state, setState] = useState(false);
+  const data = {state, props}
 
   function handleClickAway () {
     setState(false);
@@ -19,7 +20,9 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
     >
       <MenuContainer onClick={()=>setState(true)} >
         <Span>{props.title}</Span>
-        <MenuContent state={state} />
+        <MenuContent
+          data={data}
+        />
       </MenuContainer>
     </ClickAwayListener>
   )
