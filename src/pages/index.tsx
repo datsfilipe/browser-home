@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import supportImg from '../assets/support-img.svg';
 
-import {Container, Main, Categories, Aside, Footer} from '../styles/home';
+import {Container, Main, Categories, Aside, Footer, AuthButton} from '../styles/home';
 import { Menu } from '../components/Menu/index';
 import { Form } from '../components/Form/index';
 
@@ -16,6 +16,15 @@ const Home: NextPage = () => {
         <title>Home page</title>
       </Head>
       <Main>
+        <AuthButton onClick={signIn}>
+          <Image
+            src={user.avatar}
+            alt="Usuário"
+            width={24}
+            height={24}
+          />
+          {user.name}
+        </AuthButton>
         <Aside>
           <Image src={supportImg} alt="Imagem de Banner" />
         </Aside>

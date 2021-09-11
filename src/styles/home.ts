@@ -40,10 +40,36 @@ const Categories = styled.div`
   gap: 8px;
 `;
 
+const AuthButton = styled.button`
+  cursor: pointer;
+  position: absolute;
+  width: 135px;
+  height: 40px;
+  top: 30px;
+  right: 30px;
+
+  border: none;
+  border-radius: 20px;
+  background-color: #13111B;
+  border: 1px solid #ffff80;
+  font: 14px "Poppins";
+  color: ${props => props.theme.dark.text};
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+
+  img {
+    background-color: #ffff80;
+    border-radius: 50%;
+  }
+`;
+
 const Footer = styled.footer`
   a {
     display: block;
   }
 `;
 
-export { Container, Categories, Main, Aside, Footer };
+export { Container, Categories, Main, Aside, Footer, AuthButton };
