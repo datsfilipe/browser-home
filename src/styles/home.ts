@@ -64,7 +64,6 @@ const AuthButton = styled.button`
   }
 
   img {
-    background-color: #ffff80;
     border-radius: 50%;
   }
 `;
