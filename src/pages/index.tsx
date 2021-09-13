@@ -13,6 +13,8 @@ import { auth } from '../services/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 
+import toast, { Toaster } from 'react-hot-toast';
+
 type User = {
   id: string;
   name: string;
@@ -20,6 +22,16 @@ type User = {
 }
 
 const Home: NextPage = () => {
+  const [verify, setVerify] = useState(false)
+
+  const notify = () => toast('If you click again in this button, you will logout from your Google account.', {
+    style: {
+      textAlign: 'center',
+      font: 'Poppins',
+      border: '1px' || 'solid' || '#13111B',
+    },
+    icon: '💤',
+  });
 
   const defaultUserTemplate = {
     id: '',
@@ -69,10 +81,14 @@ const Home: NextPage = () => {
           avatar: photoURL
         })
       }
+    } else if (verify === false) {
+      notify();
+      setVerify(true);
+    } else {
+      await auth.signOut();
+      window.location.reload();
     }
   }
-
-  console.log(user)
 
   return (
     <Container>
@@ -89,6 +105,15 @@ const Home: NextPage = () => {
           />
           {user.name}
         </AuthButton>
+        <Toaster
+          toastOptions={{
+            duration: 5000,
+            style: {
+              background: '#201A2D',
+              color: '#fefefe',
+            }
+          }}
+        />
         <Aside>
           <Image src={supportImg} alt="Banner" />
         </Aside>
