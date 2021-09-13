@@ -48,10 +48,9 @@ const AuthButton = styled.button`
   top: 30px;
   right: 30px;
 
-  border: none;
+  border: 1px solid #13111B;
   border-radius: 20px;
-  background-color: #13111B;
-  border: 1px solid #ffff80;
+  background-color: #201A2D;
   font: 14px "Poppins";
   color: ${props => props.theme.dark.text};
 
@@ -59,6 +58,10 @@ const AuthButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+
+  &:hover {
+    background-color: #13111B;
+  }
 
   img {
     background-color: #ffff80;
