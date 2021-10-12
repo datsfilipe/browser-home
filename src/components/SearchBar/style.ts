@@ -7,6 +7,12 @@ const SearchBarContainer = styled.form`
   flex-direction: row;
 
   margin-top: 185px;
+
+  button {
+    div {
+      margin: 2px 0 0 1px!important;
+    }
+  }
 `;
 
 const Input = styled.input`
@@ -17,7 +23,7 @@ const Input = styled.input`
   padding-left: 8px;
 
   font: 22px 'Roboto', sans-serif;
-  color: ${props => props.theme.dark.input_text}
+  color: #313131;
 `;
 
 export { SearchBarContainer, Input };

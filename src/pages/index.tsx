@@ -2,18 +2,19 @@ import type { NextPage } from 'next'
 import Head from 'next/head';
 import Image from 'next/image';
 
-import accountImg from '../assets/account.svg';
-import supportImg from '../assets/support-img.svg';
+import { useEffect, useState } from 'react';
+
+import { GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
+import { auth } from '../services/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import toast, { Toaster } from 'react-hot-toast';
 
 import {Container, Main, Categories, Aside, Footer, AuthButton} from '../styles/home';
 import { Menu } from '../components/Menu/index';
 import { Form } from '../components/Form/index';
-import { GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
-import { auth } from '../services/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect, useState } from 'react';
 
-import toast, { Toaster } from 'react-hot-toast';
+import accountImg from '../assets/account.svg';
+import supportImg from '../assets/support-img.svg';
 
 type User = {
   id: string;
@@ -28,14 +29,14 @@ const Home: NextPage = () => {
     style: {
       textAlign: 'center',
       font: 'Poppins',
-      border: '1px' || 'solid' || '#13111B',
+      border: '1px' || 'solid' || '#5A4B81',
     },
     icon: '💤',
   });
 
   const defaultUserTemplate = {
     id: '',
-    name: 'Faça Login',
+    name: 'Login',
     avatar: accountImg
   }
 
@@ -103,13 +104,13 @@ const Home: NextPage = () => {
             width={24}
             height={24}
           />
-          {user.name}
+          <p className="username">{user.name.split(' ')[0]}</p>
         </AuthButton>
         <Toaster
           toastOptions={{
             duration: 5000,
             style: {
-              background: '#201A2D',
+              background: '#252131',
               color: '#fefefe',
             }
           }}

@@ -43,14 +43,15 @@ const Categories = styled.div`
 const AuthButton = styled.button`
   cursor: pointer;
   position: absolute;
-  width: 135px;
-  height: 40px;
+
+  height: 48px;
+  max-width: 90px;
   top: 30px;
   right: 30px;
 
-  border: 1px solid #13111B;
+  border: 1px solid #141414;
   border-radius: 20px;
-  background-color: #201A2D;
+  background-color: #44475A75;
   font: 14px "Poppins";
   color: ${props => props.theme.dark.text};
 
@@ -58,12 +59,21 @@ const AuthButton = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 10px;
+  gap: 10px;
+  .username {
+    display: none;
+  }
+  transition: max-width 0.2s;
 
   &:hover {
-    background-color: #13111B;
+    max-width: 135px;
+    .username {
+      display: inline-flex;
+    }
   }
 
   img {
+    height: 30px;
     border-radius: 50%;
   }
 `;

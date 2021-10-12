@@ -48,6 +48,7 @@ const ButtonAdd = styled.button`
   width: 32px;
   border-radius: 15px;
   border: none;
+  cursor: pointer;
 `;
 
 const Input = styled.input`
@@ -58,6 +59,11 @@ const Input = styled.input`
   color: ${props => props.theme.dark.text};
   font: 16px 'Poppins', sans-serif;
   font-weight: 500;
+
+  ::placeholder {
+    color: ${props => props.theme.dark.text};
+    opacity: 0.4;
+  }
 `;
 
 const Form = styled.form`
