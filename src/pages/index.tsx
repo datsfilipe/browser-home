@@ -18,12 +18,6 @@ import { useMenus } from '../hooks/useMenus'
 import accountImg from '../assets/account.svg';
 import supportImg from '../assets/support-img.svg';
 
-type User = {
-  id: string;
-  name: string;
-  avatar: string;
-}
-
 const Home: NextPage = () => {
   const [verify, setVerify] = useState(false)
   const { menus, handleCreateMenus  } = useMenus()
@@ -42,7 +36,6 @@ const Home: NextPage = () => {
     name: 'Login',
     avatar: accountImg
   }
-
   const [user, setUser] = useState<User>(defaultUserTemplate);
 
   useEffect(() => {
@@ -129,9 +122,9 @@ const Home: NextPage = () => {
         <div id="container">
           <Form />
           <Categories>
-            <Menu title="Social"  />
-            <Menu title="Study"  />
-            <Menu title="Games"  />
+            <Menu title={menus.first_menu.title} />
+            <Menu title={menus.second_menu.title} />
+            <Menu title={menus.third_menu.title} />
           </Categories>
         </div>
 
@@ -140,6 +133,7 @@ const Home: NextPage = () => {
         <a href="">Banner</a>/ with license: <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International (CC BY 4.0)</a>
         <a href="https://iconscout.com/icons/plus" target="_blank">Plus Icon</a> on <a href="https://iconscout.com">Iconscout</a>
         <a href="https://iconscout.com/icons/account" target="_blank">Account Icon</a> on <a href="https://iconscout.com">Iconscout</a>
+        Dropdown menu icons by <a href="https://iconscout.com/contributors/font-awesome">Font Awesome</a> on <a href="https://iconscout.com">Iconscout</a>
       </Footer> */}
     </Container>
   )
