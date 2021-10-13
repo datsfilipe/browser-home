@@ -9,9 +9,11 @@ import { auth } from '../services/firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 import toast, { Toaster } from 'react-hot-toast';
 
+import { User } from '../types/user';
 import {Container, Main, Categories, Aside, Footer, AuthButton} from '../styles/home';
 import { Menu } from '../components/Menu/index';
 import { Form } from '../components/Form/index';
+import { useMenus } from '../hooks/useMenus'
 
 import accountImg from '../assets/account.svg';
 import supportImg from '../assets/support-img.svg';

@@ -1,8 +1,14 @@
+import Image from 'next/image';
+
 import { useState } from "react";
-import { MenuContent } from "../MenuContent/index";
-import { MenuContainer, Span } from './style';
 import React, { HTMLAttributes } from "react";
+
 import { ClickAwayListener } from '@material-ui/core';
+
+import { MenuContent } from "../MenuContent/index";
+import { MenuContainer, Span, Dropdown } from './style';
+import dropdownImg from '../../assets/dropdown.svg';
+import dropupImg from '../../assets/dropup.svg';
 
 export function Menu(props: HTMLAttributes<HTMLDivElement>) {
   const [state, setState] = useState(false);
