@@ -22,6 +22,16 @@ const MenuContainer = styled.div`
   }
 `;
 
+const Dropdown = styled.div`
+  height: 24px;
+  width: 24px;
+  margin-left: 12px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+`;
+
 const Span = styled.span`
   padding: 0 100px;
   font: 18px 'Poppins', sans-serif;
@@ -29,4 +39,4 @@ const Span = styled.span`
   color: ${props => props.theme.dark.text};
 `;
 
-export {Span, MenuContainer};
+export {Span, MenuContainer, Dropdown};

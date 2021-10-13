@@ -25,6 +25,14 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
       onClickAway={handleClickAway}
     >
       <MenuContainer onClick={()=>setState(true)} >
+        <Dropdown>
+          { state ? (
+              <Image id="dropup-image" src={dropupImg} alt="Minimize Menu" width="24" height="24" />
+            ) : (
+              <Image id="dropdown-image" src={dropdownImg} alt="Open Menu" width="24" height="24" />
+            )
+          }
+        </Dropdown>
         <Span>{props.title}</Span>
         <MenuContent
           data={data}
