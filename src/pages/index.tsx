@@ -26,12 +26,13 @@ type User = {
 
 const Home: NextPage = () => {
   const [verify, setVerify] = useState(false)
+  const { menus, handleCreateMenus  } = useMenus()
 
-  const notify = () => toast('If you click again in this button, you will logout from your Google account.', {
+  const notify = () => toast('Click again to logout from your Google account.', {
     style: {
       textAlign: 'center',
       font: 'Poppins',
-      border: '1px' || 'solid' || '#5A4B81',
+      border: '1px' || 'solid' || '#141414',
     },
     icon: '💤',
   });
