@@ -38,3 +38,28 @@
       console.error(error);
     });
   }
+
+  function handleUpdateMenuTitle (authorId: string, menuIndex: number, titleValue: string) {
+    if (authorId.length < 1) return;
+
+    try {
+      if (menuIndex === 0) {
+        set(ref(database, 'menus/' + authorId + '/first_menu'), {
+          title: titleValue,
+        });
+      } else if (menuIndex === 1) {
+        set(ref(database, 'menus/' + authorId + '/second_menu'), {
+          title: titleValue,
+        });
+      } else if (menuIndex === 2) {
+        set(ref(database, 'menus/' + authorId + '/third_menu'), {
+          title: titleValue,
+        });
+      } else {
+        throw new Error('menuIndex value not accepted');
+      }
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
