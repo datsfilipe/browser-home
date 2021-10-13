@@ -94,6 +94,10 @@ const Home: NextPage = () => {
     }
   }
 
+  useEffect(() => {
+    handleCreateMenus(user.id)
+  }, [handleCreateMenus, user.id])
+
   return (
     <Container>
       <Head>
