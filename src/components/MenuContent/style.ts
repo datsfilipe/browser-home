@@ -62,7 +62,7 @@ const Input = styled.input`
 
   ::placeholder {
     color: ${props => props.theme.dark.text};
-    opacity: 0.4;
+    opacity: 0.6;
   }
 `;
 
