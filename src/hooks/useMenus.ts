@@ -1,3 +1,25 @@
+import { useState } from 'react';
+import { v4 as uuid} from 'uuid';
+import { Menus } from '../types/menus';
+import { database } from '../services/firebase';
+import { ref, set, get, child } from '@firebase/database';
+
+export function useMenus() {
+  const defaultMenusTemplate: Menus = {
+    id: '',
+    first_menu: {
+      title: 'Social'
+    },
+    second_menu: {
+      title: 'Study'
+    },
+    third_menu: {
+      title: 'Games'
+    }
+  }
+
+  const [menus, setMenus] = useState<Menus>(defaultMenusTemplate)
+
   function handleCreateMenus (authorId: string) {
     if (authorId.length < 1) return;
 
@@ -63,3 +85,7 @@
     }
   }
 
+  const value = { menus, handleUpdateMenuTitle, handleCreateMenus }
+
+  return value;
+}
