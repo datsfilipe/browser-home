@@ -13,7 +13,7 @@ const MenuContentContainer = styled.div`
   border: none;
   border-radius: 20px;
 
-  box-shadow: 2px 2px 1px 2px rgba(65, 65, 77, 0.2);
+  border: 1px solid #44475A75;
 `;
 
 const Ul = styled.ul`
