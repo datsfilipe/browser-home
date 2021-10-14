@@ -3,6 +3,7 @@ import styled from "styled-components";
 const MenuContainer = styled.div`
   margin-top: 4rem;
   height: 40px;
+  max-width: 400px;
   border-radius: 15px;
 
   position: relative;
@@ -26,10 +27,34 @@ const Dropdown = styled.div`
   height: 16px;
   width: 18px;
   margin-left: 14px;
+  margin-bottom: 4px;
   background-color: transparent;
   border: none;
   outline: none;
   cursor: pointer;
+  transition: all 300ms;
+
+  &:hover {
+    margin-top: 0;
+    width: 20px;
+    height: 20px;
+  }
+`;
+
+const EditButton = styled.button`
+  margin-top: 4px;
+  margin-right: 14px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 300ms;
+
+  &:hover {
+    margin-top: 0;
+    width: 26px;
+    height: 26px;
+  }
 `;
 
 const Span = styled.span`
@@ -39,4 +64,4 @@ const Span = styled.span`
   color: ${props => props.theme.dark.text};
 `;
 
-export {Span, MenuContainer, Dropdown};
+export {Span, MenuContainer, Dropdown, EditButton};

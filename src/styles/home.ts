@@ -32,6 +32,7 @@ const Main = styled.main`
 
 const Categories = styled.div`
   display: flex;
+  min-width: 700px;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
