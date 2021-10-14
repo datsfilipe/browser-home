@@ -52,11 +52,15 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
           }
         </Dropdown>
         <Span>{props.title}</Span>
-        <PopupComponent menuTitle={props.title} title='save item' content='just put info there' button={
-          <EditButton >
-            <Image src={editMenuImg} alt="Edit Menu" width="24" height="24" />
-          </EditButton>
-        } />
+        <div suppressHydrationWarning={true}>
+          {process.browser &&
+            <PopupComponent menuTitle={props.title} title='save item' content='just put info there' button={
+              <EditButton >
+                <Image src={editMenuImg} alt="Edit Menu" width="24" height="24" />
+              </EditButton>
+            } />
+          }
+        </div>
         <MenuContent
           data={data}
         />
