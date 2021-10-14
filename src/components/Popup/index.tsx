@@ -51,12 +51,12 @@ export function PopupComponent (props: {
       nested
     >
       {(close: any) => (
-        <Modal className="modal">
-          <CloseButton className="close" onClick={close}>
+        <Modal>
+          <CloseButton onClick={close}>
             &times;
           </CloseButton>
-          <Header className="header"> {props.title} </Header>
-          <ModalContent className="content">
+          <Header> {props.title} </Header>
+          <ModalContent>
             {' '}
             {props.content}
           </ModalContent>
@@ -65,14 +65,13 @@ export function PopupComponent (props: {
             value={newTitle}
             onChange={handleInputChange}
           />
-          <ModalActions className="actions">
+          <ModalActions>
             <Button onClick={ () => {
               handleSaveTitle();
               close();
             }
             }>Salvar</Button>
             <Button
-              className="button"
               onClick={() => {
                 close();
               }}
