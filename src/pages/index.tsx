@@ -2,94 +2,26 @@ import type { NextPage } from 'next'
 import Head from 'next/head';
 import Image from 'next/image';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import { GoogleAuthProvider, signInWithPopup } from '@firebase/auth';
-import { auth } from '../services/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import toast, { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
-import { User } from '../types/user';
-import {Container, Main, Categories, Aside, Footer, AuthButton} from '../styles/home';
+import { Container, Main, Categories, Aside, Footer, AuthButton } from '../styles/home';
 import { Menu } from '../components/Menu/index';
 import { Form } from '../components/Form/index';
-import { useMenus } from '../hooks/useMenus'
+import { useMenus } from '../hooks/useMenus';
+import{ useAuth } from '../hooks/useAuth';
 
-import accountImg from '../assets/account.svg';
 import supportImg from '../assets/support-img.svg';
 
 const Home: NextPage = () => {
-  const [verify, setVerify] = useState(false)
   const { menus, handleCreateMenus  } = useMenus()
-
-  const notify = () => toast('Click again to logout from your Google account.', {
-    style: {
-      textAlign: 'center',
-      font: 'Poppins',
-      border: '1px' || 'solid' || '#141414',
-    },
-    icon: '💤',
-  });
-
-  const defaultUserTemplate = {
-    id: '',
-    name: 'Login',
-    avatar: accountImg
-  }
-  const [user, setUser] = useState<User>(defaultUserTemplate);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, user => {
-      if (user) {
-        const { displayName, photoURL, uid } = user;
-
-        if (!displayName || !photoURL) {
-          throw new Error('Missing information from Google account');
-        }
-
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL
-        })
-      }
-    })
-
-    return () => {
-      unsubscribe();
-    }
-  }, [])
-
-  async function signIn () {
-    if (user === defaultUserTemplate) {
-      const provider = new GoogleAuthProvider();
-
-      const result = await signInWithPopup(auth, provider);
-      if (result.user) {
-        const { displayName, photoURL, uid } = result.user;
-
-        if (!displayName || !photoURL) {
-          throw new Error('Missing information from Google account')
-        }
-
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL
-        })
-      }
-    } else if (verify === false) {
-      notify();
-      setVerify(true);
-    } else {
-      await auth.signOut();
-      window.location.reload();
-    }
-  }
+  const { user, signIn } = useAuth()
 
   useEffect(() => {
     handleCreateMenus(user.id)
-  }, [handleCreateMenus, user.id])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user.id])
 
   return (
     <Container>
@@ -97,7 +29,7 @@ const Home: NextPage = () => {
         <title>Home page</title>
       </Head>
       <Main>
-        <AuthButton onClick={signIn}>
+        <AuthButton onClick={() => signIn()}>
           <Image
             src={user.avatar}
             alt="Usuário"
@@ -127,13 +59,13 @@ const Home: NextPage = () => {
             <Menu title={menus.third_menu.title} />
           </Categories>
         </div>
-
       </Main>
       {/* <Footer>
         <a href="">Banner</a>/ with license: <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International (CC BY 4.0)</a>
         <a href="https://iconscout.com/icons/plus" target="_blank">Plus Icon</a> on <a href="https://iconscout.com">Iconscout</a>
         <a href="https://iconscout.com/icons/account" target="_blank">Account Icon</a> on <a href="https://iconscout.com">Iconscout</a>
         Dropdown menu icons by <a href="https://iconscout.com/contributors/font-awesome">Font Awesome</a> on <a href="https://iconscout.com">Iconscout</a>
+        <a href="https://iconscout.com/icons/eyedropper" target="_blank">Eyedropper Icon</a> by <a href="https://iconscout.com/contributors/font-awesome" target="_blank">Font Awesome</a>
       </Footer> */}
     </Container>
   )
