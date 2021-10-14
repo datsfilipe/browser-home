@@ -16,5 +16,9 @@ export default createGlobalStyle`
     .show {
       display: block;
     }
+
+    .popup-overlay {
+      background-color: rgba(14,14,14,0.4);
+    }
   }
 `;
