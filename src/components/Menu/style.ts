@@ -23,9 +23,9 @@ const MenuContainer = styled.div`
 `;
 
 const Dropdown = styled.div`
-  height: 24px;
-  width: 24px;
-  margin-left: 12px;
+  height: 16px;
+  width: 18px;
+  margin-left: 14px;
   background-color: transparent;
   border: none;
   outline: none;

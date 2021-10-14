@@ -18,14 +18,28 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
     setState(false);
   }
 
+  function handleButtonDropdownClick () {
+    if (state) {
+      setState(false);
+    } else {
+      setState(true);
+    }
+  }
+
+  function handleMenuClick () {
+    if (state === false) {
+      setState(true)
+    }
+  }
+
   return (
     <ClickAwayListener
       mouseEvent="onMouseDown"
       touchEvent="onTouchStart"
       onClickAway={handleClickAway}
     >
-      <MenuContainer onClick={()=>setState(true)} >
-        <Dropdown>
+      <MenuContainer onClick={handleMenuClick} >
+        <Dropdown onClick={handleButtonDropdownClick} >
           { state ? (
               <Image id="dropup-image" src={dropupImg} alt="Minimize Menu" width="24" height="24" />
             ) : (
