@@ -5,8 +5,7 @@ import React, { HTMLAttributes } from "react";
 
 import { ClickAwayListener } from '@material-ui/core';
 
-import { MenuContent } from "../MenuContent/index";
-import { MenuContainer, Span, Dropdown } from './style';
+import PopupComponent from '../Popup';
 import dropdownImg from '../../assets/dropdown.svg';
 import dropupImg from '../../assets/dropup.svg';
 
