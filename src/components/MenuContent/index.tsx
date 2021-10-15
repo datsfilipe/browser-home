@@ -5,6 +5,7 @@ import { FormEvent, HTMLAttributes, useState } from 'react';
 
 type Data = {
   data: {
+    isMounted: boolean,
     state: boolean,
     props: HTMLAttributes<HTMLDivElement>
   }

@@ -16,18 +16,22 @@ import editMenuImg from '../../assets/edit-icon.svg';
 
 export function Menu(props: HTMLAttributes<HTMLDivElement>) {
   const [state, setState] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
-  const data = {state, props}
+  const data = {state, isMounted, props}
 
   function handleClickAway () {
     setState(false);
+    setIsMounted(false);
   }
 
   function handleButtonDropdownClick () {
     if (state) {
       setState(false);
+      setIsMounted(false);
     } else {
       setState(true);
+      setIsMounted(true);
     }
   }
 
