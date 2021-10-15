@@ -12,10 +12,11 @@ export function PopupComponent (props: {
   button: JSX.Element;
   menuTitle: string | undefined;
 }) {
-  const [newTitle, setNewTitle] = useState('');
-  const [menuIndex, setMenuIndex] = useState<number>(0);
   const { user } = useAuth()
   const { menus, handleUpdateMenuTitle } = useMenus()
+
+  const [newTitle, setNewTitle] = useState('');
+  const [menuIndex, setMenuIndex] = useState<number>(0);
 
   function handleInputChange (event: ChangeEvent<HTMLInputElement>) {
     setNewTitle(event.target.value);

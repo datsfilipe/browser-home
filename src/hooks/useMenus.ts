@@ -96,6 +96,7 @@ export function useMenus() {
     if (authorId.length < 1) return;
     if (titleValue.length < 1) {
       console.log('Value not accepted');
+      return;
     };
 
     try {

@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import accountImg from '../assets/account.svg';
 import { auth } from "../services/firebase";
 import { User } from '../types/user';
+import { useToast } from '../hooks/useToast';
 
 export function useAuth () {
   const defaultUserTemplate = {
@@ -11,6 +12,9 @@ export function useAuth () {
     name: 'Login',
     avatar: <string>accountImg
   }
+
+  const { notify } = useToast()
+
   const [user, setUser] = useState<User>(defaultUserTemplate);
   const [verify, setVerify] = useState(false)
 
@@ -45,7 +49,7 @@ export function useAuth () {
         })
       }
     } else if (verify === false) {
-      notify();
+      notify('Click again to logout from your Google account.', '💤');
       setVerify(true);
     } else {
       await auth.signOut();

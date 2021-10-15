@@ -4,8 +4,7 @@ import Image from 'next/image';
 
 import { useEffect } from 'react';
 
-import { Toaster } from 'react-hot-toast';
-
+import { useToast } from '../hooks/useToast';
 import { Container, Main, Categories, Aside, Footer, AuthButton } from '../styles/home';
 import { Menu } from '../components/Menu/index';
 import { Form } from '../components/Form/index';
@@ -17,6 +16,7 @@ import supportImg from '../assets/support-img.svg';
 const Home: NextPage = () => {
   const { menus, handleCreateMenus  } = useMenus()
   const { user, signIn } = useAuth()
+  const { Toast } = useToast()
 
   useEffect(() => {
     handleCreateMenus(user.id)
@@ -38,19 +38,10 @@ const Home: NextPage = () => {
           />
           <p className="username">{user.name.split(' ')[0]}</p>
         </AuthButton>
-        <Toaster
-          toastOptions={{
-            duration: 5000,
-            style: {
-              background: '#252131',
-              color: '#fefefe',
-            }
-          }}
-        />
+        <Toast />
         <Aside>
           <Image src={supportImg} alt="Banner" />
         </Aside>
-
         <div id="container">
           <Form />
           <Categories>
