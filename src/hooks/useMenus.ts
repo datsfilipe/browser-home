@@ -6,6 +6,7 @@ import { ref, set, get, child } from '@firebase/database';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 import { Item } from '../types/item';
+import { push } from 'firebase/database';
 
 export function useMenus() {
   const defaultMenusTemplate: Menus = {
@@ -37,12 +38,15 @@ export function useMenus() {
             id: snapshot.child('id').val(),
             first_menu: {
               title: snapshot.child('first_menu').child('title').val(),
+              items: snapshot.child('first_menu').child('items').val(),
             },
             second_menu: {
               title: snapshot.child('second_menu').child('title').val(),
+              items: snapshot.child('second_menu').child('items').val(),
             },
             third_menu: {
               title: snapshot.child('third_menu').child('title').val(),
+              items: snapshot.child('third_menu').child('items').val(),
             },
           })
         }
@@ -69,12 +73,15 @@ export function useMenus() {
               id: snapshot.child('id').val(),
               first_menu: {
                 title: snapshot.child('first_menu').child('title').val(),
+                items: snapshot.child('first_menu').child('items').val(),
               },
               second_menu: {
                 title: snapshot.child('second_menu').child('title').val(),
+                items: snapshot.child('second_menu').child('items').val(),
               },
               third_menu: {
                 title: snapshot.child('third_menu').child('title').val(),
+                items: snapshot.child('third_menu').child('items').val(),
               },
             })
           }
@@ -135,17 +142,17 @@ export function useMenus() {
 
     try {
       if (menuIndex === 0) {
-        set(ref(database, 'menus/' + authorId + '/first_menu'), {
+        push(ref(database, 'menus/' + authorId + '/first_menu' + '/items'), {
           name: itemValue.name,
           url: itemValue.url
         });
       } else if (menuIndex === 1) {
-        set(ref(database, 'menus/' + authorId + '/second_menu'), {
+        push(ref(database, 'menus/' + authorId + '/second_menu' + '/items'), {
           name: itemValue.name,
           url: itemValue.url
         });
       } else if (menuIndex === 2) {
-        set(ref(database, 'menus/' + authorId + '/third_menu'), {
+        push(ref(database, 'menus/' + authorId + '/third_menu' + '/items'), {
           name: itemValue.name,
           url: itemValue.url
         });
