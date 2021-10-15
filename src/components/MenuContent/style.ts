@@ -49,6 +49,10 @@ const ButtonAdd = styled.button`
   border-radius: 15px;
   border: none;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 `;
 
 const Input = styled.input`
@@ -66,9 +70,9 @@ const Input = styled.input`
   }
 `;
 
-const Form = styled.form`
+const Content = styled.div`
   width: 100%;
   display: inline-flex;
 `;
 
-export { MenuContentContainer, Ul, Li, ButtonAdd, Input, Form };
+export { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content };

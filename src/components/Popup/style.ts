@@ -18,9 +18,9 @@ const Header = styled.div`
   border-bottom: 1px solid #44475A75;
   font-size: 18px;
   font-family: Poppins, sans-serif;
+  color: ${props => props.theme.dark.text};
   text-align: center;
   padding: 5px;
-  color: white;
 `;
 
 const ModalContent = styled.div`
@@ -28,19 +28,21 @@ const ModalContent = styled.div`
   padding: 10px 5px;
   font-size: 16px;
   text-align: center;
+  color: #fefefe;
 `;
 
 const Input = styled.input`
   border: none;
   margin-top: 6px;
   max-width: 250px;
-  outline: none;
-  border-radius: 15px;
+  border-radius: 8px;
   padding: 4px 8px 4px 8px;
   opacity: 0.7;
 
   font: 16px 'Roboto', sans-serif;
   color: #313131;
+
+  transition: opacity 250ms;
 
   &:focus {
     opacity: 1;
@@ -64,13 +66,13 @@ const CloseButton = styled.button`
   right: -10px;
   top: -10px;
   font-size: 24px;
-  background: ${props => props.theme.dark.outline_effect};
+  background: #44475a;
   border-radius: 18px;
-  border: 1px solid #212121;
-  transition: opacity 300ms;
+  border: 1px solid #313131;
+  transition: all 250ms;
 
   &:hover {
-    opacity: 0.8;
+    background: #41414D;
   }
 `;
 
