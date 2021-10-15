@@ -4,6 +4,8 @@ import { Menus } from '../types/menus';
 import { database } from '../services/firebase';
 import { ref, set, get, child } from '@firebase/database';
 import { useAuth } from '../hooks/useAuth';
+import { useToast } from '../hooks/useToast';
+import { Item } from '../types/item';
 
 export function useMenus() {
   const defaultMenusTemplate: Menus = {
@@ -20,6 +22,7 @@ export function useMenus() {
   }
 
   const { user } = useAuth()
+  const { notify } = useToast()
 
   const [menus, setMenus] = useState<Menus>(defaultMenusTemplate)
 
@@ -47,6 +50,7 @@ export function useMenus() {
     }).catch((error) => {
       console.error(error);
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     menus, user.id
   ]);
@@ -97,7 +101,7 @@ export function useMenus() {
   function handleUpdateMenuTitle (authorId: string, menuIndex: number, titleValue: string) {
     if (authorId.length < 1) return;
     if (titleValue.length < 1) {
-      console.log('Value not accepted');
+      notify('Value not accepted', '🙅‍♀️');
       return;
     };
 
@@ -122,7 +126,38 @@ export function useMenus() {
     }
   }
 
-  const value = { menus, handleUpdateMenuTitle, handleCreateMenus }
+  function handleAddMenuItem (authorId: string, menuIndex: number, itemValue: Item) {
+    if (authorId.length < 1) return;
+    if (itemValue.name.length < 1 || itemValue.url.length < 1) {
+      notify('Value not accepted', '🙅‍♀️');
+      return;
+    };
+
+    try {
+      if (menuIndex === 0) {
+        set(ref(database, 'menus/' + authorId + '/first_menu'), {
+          name: itemValue.name,
+          url: itemValue.url
+        });
+      } else if (menuIndex === 1) {
+        set(ref(database, 'menus/' + authorId + '/second_menu'), {
+          name: itemValue.name,
+          url: itemValue.url
+        });
+      } else if (menuIndex === 2) {
+        set(ref(database, 'menus/' + authorId + '/third_menu'), {
+          name: itemValue.name,
+          url: itemValue.url
+        });
+      } else {
+        throw new Error('menuIndex value not accepted');
+      }
+    } catch(err) {
+      console.error(err);
+    }
+  }
+
+  const value = { menus, handleUpdateMenuTitle, handleCreateMenus, handleAddMenuItem }
 
   return value;
 }
