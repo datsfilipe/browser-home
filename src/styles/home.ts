@@ -51,7 +51,7 @@ const AuthButton = styled.button`
   right: 30px;
 
   border: 1px solid #141414;
-  border-radius: 20px;
+  border-radius: 50px;
   background-color: #44475A75;
   font: 14px "Poppins";
   color: ${props => props.theme.dark.text};
