@@ -1,7 +1,8 @@
-import { MenuContentContainer, Ul, Li, ButtonAdd, Input, Form } from './style';
+import { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content } from './style';
 import Image from 'next/image';
 import plus from '../../assets/plus.svg';
-import { FormEvent, HTMLAttributes, useState } from 'react';
+import { ChangeEvent, HTMLAttributes, useEffect, useState } from 'react';
+import PopupComponent from '../Popup';
 
 type Data = {
   data: {
@@ -12,40 +13,42 @@ type Data = {
 }
 
 export function MenuContent(data: Data, props:  HTMLAttributes<HTMLDivElement>) {
-  const [newItem, setNewItem] = useState('');
+  const [newMenuItemUrl, setNewMenuItemUrl] = useState('')
 
-  async function handleClickButtonAdd(event: FormEvent) {
-    event.preventDefault();
+  async function handleInputChangeValue(event: ChangeEvent<HTMLInputElement>) {
+    if (event.target.value.trim() === '') return;
 
-    if (newItem.trim() === '') return;
-    if (data.data.props.title?.trim() === undefined) return;
-
-    setNewItem('')
+    setNewMenuItemUrl(event.target.value)
   }
 
   return (
     <MenuContentContainer className={`${data.data.state ? 'show' : ''}`} {...props}>
       <Ul>
         <Li>
-          <Form>
-            <ButtonAdd type="submit" onClick={handleClickButtonAdd}>
-              <div className="image">
-                <Image src={plus} alt="Adicionar item" />
-              </div>
-            </ButtonAdd>
+          <Content>
+            <div suppressHydrationWarning={true}>
+              {process.browser &&
+                <PopupComponent emoji='📩' menuItemUrl={newMenuItemUrl} menuTitle={data.data.props.title} title='Salve um novo item' content='Insira um nome para o item aqui:' button={
+                  <ButtonAdd disabled={!newMenuItemUrl} onClick={() => setNewMenuItemUrl('')}>
+                    <div className="image">
+                      <Image src={plus} alt="Adicionar item" />
+                    </div>
+                  </ButtonAdd>
+                } />
+              }
+            </div>
             <Input
               placeholder="Adicionar Link"
-              onChange={event => setNewItem(event.target.value)}
-              value={newItem}
+              onChange={handleInputChangeValue}
+              value={newMenuItemUrl}
             />
-          </Form>
+          </Content>
         </Li>
-        {/* {list.map( (item: any) => {
+        {() => {
           return (
-            // eslint-disable-next-line react/jsx-key
-            <Li>{item}</Li>
-          );
-        } )} */}
+            <Li></Li>
+          )
+        }}
       </Ul>
     </MenuContentContainer>
   )

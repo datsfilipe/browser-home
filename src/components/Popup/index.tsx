@@ -5,21 +5,25 @@ import Popup from 'reactjs-popup';
 import { CloseButton, Header, ModalActions, ModalContent, Modal, Button, Input } from './style';
 import { useMenus } from '../../hooks/useMenus';
 import { useAuth } from '../../hooks/useAuth';
+import { useToast } from '../../hooks/useToast';
 
 export function PopupComponent (props: {
   title: string;
+  emoji?: string;
   content: string;
   button: JSX.Element;
   menuTitle: string | undefined;
+  menuItemUrl?: string;
 }) {
   const { user } = useAuth()
-  const { menus, handleUpdateMenuTitle } = useMenus()
+  const { menus, handleUpdateMenuTitle, handleAddMenuItem } = useMenus()
+  const { notify } = useToast()
 
-  const [newTitle, setNewTitle] = useState('');
+  const [newValue, setNewValue] = useState('');
   const [menuIndex, setMenuIndex] = useState<number>(0);
 
   function handleInputChange (event: ChangeEvent<HTMLInputElement>) {
-    setNewTitle(event.target.value);
+    setNewValue(event.target.value);
   }
 
   useEffect(() => {
@@ -33,13 +37,28 @@ export function PopupComponent (props: {
   }, [menuIndex, menus.first_menu.title, menus.second_menu.title, props.menuTitle])
 
   function handleSaveTitle () {
-    if (newTitle.length > 10) {
-      console.log('WARNING: just accept values with less than 10 characters.')
+    if (newValue.length > 10) {
+      notify('WARNING: just accept values with less than 10 characters.', '⚠️')
       return;
     }
     try {
-      handleUpdateMenuTitle(user.id, menuIndex, newTitle);
-      setNewTitle('')
+      handleUpdateMenuTitle(user.id, menuIndex, newValue);
+      setNewValue('')
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  function handleSaveItem () {
+    if (!props.menuItemUrl) return;
+
+    try {
+      const item = {
+        name: newValue,
+        url: props.menuItemUrl
+      }
+      handleAddMenuItem(user.id, menuIndex, item)
+      setNewValue('')
     } catch (err) {
       console.error(err);
     }
@@ -56,19 +75,19 @@ export function PopupComponent (props: {
           <CloseButton onClick={close}>
             &times;
           </CloseButton>
-          <Header> {props.title} </Header>
+          <Header> {props.title   + ' ' + props.emoji} </Header>
           <ModalContent>
             {' '}
             {props.content}
           </ModalContent>
           <Input
             type="text"
-            value={newTitle}
+            value={newValue}
             onChange={handleInputChange}
           />
           <ModalActions>
             <Button onClick={ () => {
-              handleSaveTitle();
+              props.menuItemUrl ? handleSaveItem() : handleSaveTitle()
               close();
             }
             }>Salvar</Button>

@@ -59,7 +59,7 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
         <Span>{props.title}</Span>
         <div suppressHydrationWarning={true}>
           {process.browser &&
-            <PopupComponent menuTitle={props.title} title='save item' content='just put info there' button={
+            <PopupComponent emoji='📩' menuTitle={props.title} title='Salve um novo título' content='Insira o novo título aqui:' button={
               <EditButton >
                 <Image src={editMenuImg} alt="Edit Menu" width="24" height="24" />
               </EditButton>
