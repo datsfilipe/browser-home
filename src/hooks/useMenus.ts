@@ -18,8 +18,10 @@ export function useMenus() {
       title: 'Games'
     }
   }
-  const [menus, setMenus] = useState<Menus>(defaultMenusTemplate)
+
   const { user } = useAuth()
+
+  const [menus, setMenus] = useState<Menus>(defaultMenusTemplate)
 
   useEffect(() => {
     if (user.id.length < 1) return;

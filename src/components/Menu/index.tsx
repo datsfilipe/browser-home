@@ -16,6 +16,7 @@ import editMenuImg from '../../assets/edit-icon.svg';
 
 export function Menu(props: HTMLAttributes<HTMLDivElement>) {
   const [state, setState] = useState(false);
+
   const data = {state, props}
 
   function handleClickAway () {

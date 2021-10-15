@@ -1,10 +1,12 @@
-import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
-import accountImg from '../assets/account.svg';
+
+import { GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
+
 import { auth } from "../services/firebase";
 import { User } from '../types/user';
 import { useToast } from '../hooks/useToast';
+
+import accountImg from '../assets/account.svg';
 
 export function useAuth () {
   const defaultUserTemplate = {
@@ -17,15 +19,6 @@ export function useAuth () {
 
   const [user, setUser] = useState<User>(defaultUserTemplate);
   const [verify, setVerify] = useState(false)
-
-  const notify = () => toast('Click again to logout from your Google account.', {
-    style: {
-      textAlign: 'center',
-      font: 'Poppins',
-      border: '1px' || 'solid' || '#141414',
-    },
-    icon: '💤',
-  });
 
   async function signIn () {
     if (user === defaultUserTemplate) {
