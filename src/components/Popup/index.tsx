@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 
 import Popup from 'reactjs-popup';
+import { v4 as uuid} from 'uuid';
 
 import { CloseButton, Header, ModalActions, ModalContent, Modal, Button, Input } from './style';
 import { useMenus } from '../../hooks/useMenus';
@@ -54,6 +55,7 @@ export function PopupComponent (props: {
 
     try {
       const item = {
+        id: uuid(),
         name: newValue,
         url: props.menuItemUrl
       }

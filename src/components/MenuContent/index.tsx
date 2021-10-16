@@ -3,6 +3,9 @@ import Image from 'next/image';
 import plus from '../../assets/plus.svg';
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from 'react';
 import PopupComponent from '../Popup';
+import { useMenus } from '../../hooks/useMenus';
+import { Item } from '../../types/item';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export function MenuContent(props: {isMounted: boolean, state: boolean, props: HTMLAttributes<HTMLDivElement> }) {
   const [newMenuItemUrl, setNewMenuItemUrl] = useState('')
@@ -35,34 +38,47 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
   }, [menus.first_menu.items, menus.second_menu.items, menus.third_menu.items])
 
   return (
-    <MenuContentContainer className={`${data.data.state ? 'show' : ''}`} {...props}>
-      <Ul>
-        <Li>
-          <Content>
-            <div suppressHydrationWarning={true}>
-              {process.browser &&
-                <PopupComponent emoji='📩' menuItemUrl={newMenuItemUrl} menuTitle={data.data.props.title} title='Salve um novo item' content='Insira um nome para o item aqui:' button={
-                  <ButtonAdd disabled={!newMenuItemUrl} onClick={() => setNewMenuItemUrl('')}>
-                    <div className="image">
-                      <Image src={plus} alt="Adicionar item" />
-                    </div>
-                  </ButtonAdd>
-                } />
-              }
-            </div>
-            <Input
-              placeholder="Adicionar Link"
-              onChange={handleInputChangeValue}
-              value={newMenuItemUrl}
-            />
-          </Content>
-        </Li>
-        {() => {
-          return (
-            <Li></Li>
-          )
-        }}
-      </Ul>
+    <MenuContentContainer className={`${props.state ? 'show' :  ''}`} {...props}>
+      <Scrollbars
+        style={{ width: 260 }}
+        universal
+        autoHeight
+        autoHeightMin={40}
+        autoHeightMax={280}
+        autoHide
+        autoHideTimeout={1000}
+        autoHideDuration={200}
+      >
+        <Ul>
+          <Li id="add-item">
+            <Content>
+              <div suppressHydrationWarning={true}>
+                {process.browser &&
+                  <PopupComponent emoji='📩' menuItemUrl={newMenuItemUrl} menuTitle={props.props.title} title='Salve um novo item' content='Insira um nome para o item aqui:' button={
+                    <ButtonAdd disabled={!newMenuItemUrl} onClick={() => setNewMenuItemUrl('')}>
+                      <div className="image">
+                        <Image src={plus} alt="Adicionar item" />
+                      </div>
+                    </ButtonAdd>
+                  } />
+                }
+              </div>
+              <Input
+                placeholder="Adicionar Link"
+                onChange={handleInputChangeValue}
+                value={newMenuItemUrl}
+              />
+            </Content>
+          </Li>
+          {listItems ? listItems.map(item => {
+            return (
+              <Li className="list-item" key={item.id}>
+                <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
+              </Li>
+            )
+          }): ''}
+        </Ul>
+      </Scrollbars>
     </MenuContentContainer>
   )
 }
