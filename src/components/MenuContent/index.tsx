@@ -54,7 +54,7 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
               <div suppressHydrationWarning={true}>
                 {process.browser &&
                   <PopupComponent emoji='📩' menuItemUrl={newMenuItemUrl} menuTitle={props.props.title} title='Salve um novo item' content='Insira um nome para o item aqui:' button={
-                    <ButtonAdd disabled={!newMenuItemUrl} onClick={() => setNewMenuItemUrl('')}>
+                    <ButtonAdd disabled={!newMenuItemUrl} >
                       <div className="image">
                         <Image src={plus} alt="Adicionar item" />
                       </div>
@@ -75,7 +75,7 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
                 <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
               </Li>
             )
-          }): ''}
+          }): <></>}
         </Ul>
       </Scrollbars>
     </MenuContentContainer>
