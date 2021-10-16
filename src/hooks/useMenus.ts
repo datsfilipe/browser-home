@@ -143,16 +143,19 @@ export function useMenus() {
     try {
       if (menuIndex === 0) {
         push(ref(database, 'menus/' + authorId + '/first_menu' + '/items'), {
+          id: itemValue.id,
           name: itemValue.name,
           url: itemValue.url
         });
       } else if (menuIndex === 1) {
         push(ref(database, 'menus/' + authorId + '/second_menu' + '/items'), {
+          id: itemValue.id,
           name: itemValue.name,
           url: itemValue.url
         });
       } else if (menuIndex === 2) {
         push(ref(database, 'menus/' + authorId + '/third_menu' + '/items'), {
+          id: itemValue.id,
           name: itemValue.name,
           url: itemValue.url
         });

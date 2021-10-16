@@ -7,6 +7,11 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
+  a {
+    color: ${props => props.theme.dark.text};
+    text-decoration: none;
+  }
+
   body {
     background: ${props => props.theme.dark.background};
     color: ${props => props.theme.dark.text};

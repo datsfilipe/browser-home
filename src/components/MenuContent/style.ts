@@ -1,23 +1,21 @@
 import styled from "styled-components";
 
 const MenuContentContainer = styled.div`
-  width: 100%;
-  margin-top: 140px;
-
   display: none;
   position: absolute;
+  top: 110%;
+  padding: 32px;
+  overflow-y: auto;
 
   background-color: ${props => props.theme.dark.primary};
 
   z-index: 1;
-  border: none;
   border-radius: 20px;
 
   border: 1px solid #44475A75;
 `;
 
 const Ul = styled.ul`
-  padding: 32px;
   width: 100%;
   height: 100%;
 
@@ -39,6 +37,19 @@ const Li = styled.li`
   justify-content: center;
 
   gap: 5px;
+
+  &#add-item {
+    padding-bottom: 12px;
+  }
+
+  &.list-item {
+    margin-top: 5px;
+    border-bottom: 1px solid #44475A75;
+    &:hover {
+      cursor: pointer;
+      border-color: rgba(0,0,0,0.4);
+    }
+  }
 `;
 
 const ButtonAdd = styled.button`
@@ -76,3 +87,4 @@ const Content = styled.div`
 `;
 
 export { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content };
+
