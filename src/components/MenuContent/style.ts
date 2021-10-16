@@ -5,7 +5,6 @@ const MenuContentContainer = styled.div`
   position: absolute;
   top: 110%;
   padding: 32px;
-  overflow-y: auto;
 
   background-color: ${props => props.theme.dark.primary};
 
@@ -18,6 +17,8 @@ const MenuContentContainer = styled.div`
 const Ul = styled.ul`
   width: 100%;
   height: 100%;
+
+  margin-top: 5px;
 
   display: flex;
   flex-direction: column;

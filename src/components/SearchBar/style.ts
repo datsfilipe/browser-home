@@ -9,7 +9,6 @@ const SearchBarContainer = styled.form`
   margin-top: 185px;
 
   button {
-    border-right: 1px solid #44475A75;
     div {
       margin: 3px 0 0 1px!important;
     }
