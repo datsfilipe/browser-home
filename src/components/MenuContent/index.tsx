@@ -15,6 +15,25 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
     setNewMenuItemUrl(event.target.value)
   }
 
+  useEffect(() => {
+    if (!props.isMounted) return;
+
+    if (props.props.title === menus.first_menu.title) {
+      if (menus.first_menu.items) {
+        setListItems(Object.values(menus.first_menu.items))
+      }
+    } else if (props.props.title === menus.second_menu.title) {
+      if (menus.second_menu.items) {
+        setListItems(Object.values(menus.second_menu.items))
+      }
+    } else {
+      if (menus.third_menu.items) {
+        setListItems(Object.values(menus.third_menu.items))
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [menus.first_menu.items, menus.second_menu.items, menus.third_menu.items])
+
   return (
     <MenuContentContainer className={`${data.data.state ? 'show' : ''}`} {...props}>
       <Ul>
