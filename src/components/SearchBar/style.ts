@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const SearchBarContainer = styled.form`
   height: 55px;
@@ -14,7 +14,7 @@ const SearchBarContainer = styled.form`
       margin: 3px 0 0 1px!important;
     }
   }
-`;
+`
 
 const Input = styled.input`
   border: none;
@@ -26,6 +26,6 @@ const Input = styled.input`
 
   font: 22px 'Roboto', sans-serif;
   color: #313131;
-`;
+`
 
-export { SearchBarContainer, Input };
+export { SearchBarContainer, Input }

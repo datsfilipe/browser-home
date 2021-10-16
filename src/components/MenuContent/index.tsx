@@ -1,11 +1,11 @@
-import { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content } from './style';
-import Image from 'next/image';
-import plus from '../../assets/plus.svg';
-import { ChangeEvent, HTMLAttributes, useEffect, useState } from 'react';
-import PopupComponent from '../Popup';
-import { useMenus } from '../../hooks/useMenus';
-import { Item } from '../../types/item';
-import { Scrollbars } from 'react-custom-scrollbars';
+import { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content } from './style'
+import Image from 'next/image'
+import plus from '../../assets/plus.svg'
+import React, { ChangeEvent, HTMLAttributes, useEffect, useState } from 'react'
+import PopupComponent from '../Popup'
+import { useMenus } from '../../hooks/useMenus'
+import { Item } from '../../types/item'
+import { Scrollbars } from 'react-custom-scrollbars'
 
 export function MenuContent(props: {isMounted: boolean, state: boolean, props: HTMLAttributes<HTMLDivElement> }) {
   const [newMenuItemUrl, setNewMenuItemUrl] = useState('')
@@ -13,13 +13,13 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
   const { menus } = useMenus()
 
   async function handleInputChangeValue(event: ChangeEvent<HTMLInputElement>) {
-    if (event.target.value.trim() === '') return;
+    if (event.target.value.trim() === '') return
 
     setNewMenuItemUrl(event.target.value)
   }
 
   useEffect(() => {
-    if (!props.isMounted) return;
+    if (!props.isMounted) return
 
     if (props.props.title === menus.first_menu.title) {
       if (menus.first_menu.items) {
@@ -34,7 +34,6 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
         setListItems(Object.values(menus.third_menu.items))
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [menus.first_menu.items, menus.second_menu.items, menus.third_menu.items])
 
   return (

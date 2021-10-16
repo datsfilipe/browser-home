@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Form = styled.form`
   display: flex;
 
   flex-direction: column;
-`;
+`
 
-export { Form };
+export { Form }

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const MenuContainer = styled.div`
   margin-top: 4rem;
@@ -21,7 +21,7 @@ const MenuContainer = styled.div`
     outline: none;
     transition: all 300ms;
   }
-`;
+`
 
 const Dropdown = styled.div`
   height: 16px;
@@ -39,7 +39,7 @@ const Dropdown = styled.div`
     width: 20px;
     height: 20px;
   }
-`;
+`
 
 const EditButton = styled.button`
   margin-top: 4px;
@@ -55,13 +55,13 @@ const EditButton = styled.button`
     width: 26px;
     height: 26px;
   }
-`;
+`
 
 const Span = styled.span`
   padding: 0 100px;
   font: 18px 'Poppins', sans-serif;
   font-weight: 700;
   color: ${props => props.theme.dark.text};
-`;
+`
 
-export {Span, MenuContainer, Dropdown, EditButton};
+export {Span, MenuContainer, Dropdown, EditButton}

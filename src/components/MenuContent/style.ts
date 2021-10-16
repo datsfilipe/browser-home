@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const MenuContentContainer = styled.div`
   display: none;
@@ -13,7 +13,7 @@ const MenuContentContainer = styled.div`
   border-radius: 20px;
 
   border: 1px solid #44475A75;
-`;
+`
 
 const Ul = styled.ul`
   width: 100%;
@@ -25,7 +25,7 @@ const Ul = styled.ul`
   justify-content: center;
 
   list-style: none;
-`;
+`
 
 const Li = styled.li`
   color: ${props => props.theme.dark.text};
@@ -50,7 +50,7 @@ const Li = styled.li`
       border-color: rgba(0,0,0,0.4);
     }
   }
-`;
+`
 
 const ButtonAdd = styled.button`
   background-color: transparent;
@@ -64,7 +64,7 @@ const ButtonAdd = styled.button`
   &:disabled {
     cursor: not-allowed;
   }
-`;
+`
 
 const Input = styled.input`
   width: 100%;
@@ -79,12 +79,12 @@ const Input = styled.input`
     color: ${props => props.theme.dark.text};
     opacity: 0.6;
   }
-`;
+`
 
 const Content = styled.div`
   width: 100%;
   display: inline-flex;
-`;
+`
 
-export { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content };
+export { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content }
 

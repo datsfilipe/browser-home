@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Modal = styled.div`
   font-size: 12px;
@@ -11,7 +11,7 @@ const Modal = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-`;
+`
 
 const Header = styled.div`
   width: 100%;
@@ -21,7 +21,7 @@ const Header = styled.div`
   color: ${props => props.theme.dark.text};
   text-align: center;
   padding: 5px;
-`;
+`
 
 const ModalContent = styled.div`
   width: 100%;
@@ -29,7 +29,7 @@ const ModalContent = styled.div`
   font-size: 16px;
   text-align: center;
   color: #fefefe;
-`;
+`
 
 const Input = styled.input`
   border: none;
@@ -47,14 +47,14 @@ const Input = styled.input`
   &:focus {
     opacity: 1;
   }
-`;
+`
 
 const ModalActions = styled.div`
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
-`;
+`
 
 const CloseButton = styled.button`
   cursor: pointer;
@@ -74,7 +74,7 @@ const CloseButton = styled.button`
   &:hover {
     background: #41414D;
   }
-`;
+`
 
 const Button = styled.button`
   border: none;
@@ -94,6 +94,6 @@ const Button = styled.button`
   &:hover {
     background-color: #41414D;
   }
-`;
+`
 
 export { Modal, Header, ModalContent, ModalActions, CloseButton, Button, Input }

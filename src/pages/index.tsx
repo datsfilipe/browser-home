@@ -1,17 +1,17 @@
 import type { NextPage } from 'next'
-import Head from 'next/head';
-import Image from 'next/image';
+import Head from 'next/head'
+import Image from 'next/image'
 
-import { useEffect } from 'react';
+import React, { useEffect } from 'react'
 
-import { useToast } from '../hooks/useToast';
-import { Container, Main, Categories, Aside, Footer, AuthButton } from '../styles/home';
-import { Menu } from '../components/Menu/index';
-import { Form } from '../components/Form/index';
-import { useMenus } from '../hooks/useMenus';
-import{ useAuth } from '../hooks/useAuth';
+import { useToast } from '../hooks/useToast'
+import { Container, Main, Categories, Aside, Footer, AuthButton } from '../styles/home'
+import { Menu } from '../components/Menu/index'
+import { Form } from '../components/Form/index'
+import { useMenus } from '../hooks/useMenus'
+import{ useAuth } from '../hooks/useAuth'
 
-import supportImg from '../assets/support-img.svg';
+import supportImg from '../assets/support-img.svg'
 
 const Home: NextPage = () => {
   const { menus, handleCreateMenus  } = useMenus()
@@ -20,7 +20,6 @@ const Home: NextPage = () => {
 
   useEffect(() => {
     handleCreateMenus(user.id)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user.id])
 
   return (

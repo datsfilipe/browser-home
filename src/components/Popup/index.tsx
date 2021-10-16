@@ -1,12 +1,12 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react'
 
-import Popup from 'reactjs-popup';
-import { v4 as uuid} from 'uuid';
+import Popup from 'reactjs-popup'
+import { v4 as uuid} from 'uuid'
 
-import { CloseButton, Header, ModalActions, ModalContent, Modal, Button, Input } from './style';
-import { useMenus } from '../../hooks/useMenus';
-import { useAuth } from '../../hooks/useAuth';
-import { useToast } from '../../hooks/useToast';
+import { CloseButton, Header, ModalActions, ModalContent, Modal, Button, Input } from './style'
+import { useMenus } from '../../hooks/useMenus'
+import { useAuth } from '../../hooks/useAuth'
+import { useToast } from '../../hooks/useToast'
 
 export function PopupComponent (props: {
   title: string;
@@ -20,38 +20,38 @@ export function PopupComponent (props: {
   const { menus, handleUpdateMenuTitle, handleAddMenuItem } = useMenus()
   const { notify } = useToast()
 
-  const [newValue, setNewValue] = useState('');
-  const [menuIndex, setMenuIndex] = useState<number>(0);
+  const [newValue, setNewValue] = useState('')
+  const [menuIndex, setMenuIndex] = useState<number>(0)
 
   function handleInputChange (event: ChangeEvent<HTMLInputElement>) {
-    setNewValue(event.target.value);
+    setNewValue(event.target.value)
   }
 
   useEffect(() => {
     if (props.menuTitle === menus.first_menu.title) {
-      setMenuIndex(0);
+      setMenuIndex(0)
     } else if (props.menuTitle === menus.second_menu.title) {
-      setMenuIndex(1);
+      setMenuIndex(1)
     } else {
-      setMenuIndex(2);
+      setMenuIndex(2)
     }
   }, [menuIndex, menus.first_menu.title, menus.second_menu.title, props.menuTitle])
 
   function handleSaveTitle () {
     if (newValue.length > 10) {
       notify('WARNING: just accept values with less than 10 characters.', '⚠️')
-      return;
+      return
     }
     try {
-      handleUpdateMenuTitle(user.id, menuIndex, newValue);
+      handleUpdateMenuTitle(user.id, menuIndex, newValue)
       setNewValue('')
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
   }
 
   function handleSaveItem () {
-    if (!props.menuItemUrl) return;
+    if (!props.menuItemUrl) return
 
     try {
       const item = {
@@ -62,7 +62,7 @@ export function PopupComponent (props: {
       handleAddMenuItem(user.id, menuIndex, item)
       setNewValue('')
     } catch (err) {
-      console.error(err);
+      console.error(err)
     }
   }
 
@@ -72,6 +72,7 @@ export function PopupComponent (props: {
       modal
       nested
     >
+      {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
       {(close: any) => (
         <Modal>
           <CloseButton onClick={close}>
@@ -90,12 +91,12 @@ export function PopupComponent (props: {
           <ModalActions>
             <Button onClick={ () => {
               props.menuItemUrl ? handleSaveItem() : handleSaveTitle()
-              close();
+              close()
             }
             }>Salvar</Button>
             <Button
               onClick={() => {
-                close();
+                close()
               }}
             >
               Cancelar
@@ -104,7 +105,7 @@ export function PopupComponent (props: {
         </Modal>
       )}
     </Popup>
-  );
-};
+  )
+}
 
-export default PopupComponent;
+export default PopupComponent

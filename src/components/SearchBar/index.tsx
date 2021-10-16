@@ -1,21 +1,21 @@
-import Image from 'next/image';
+import Image from 'next/image'
 
-import { ChangeEvent, FormEvent, useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react'
 
-import { SearchBarContainer, Input } from './style';
-import { Button } from '../Button/index';
-import duckduckgoImg from '../../assets/duckduckgo.svg';
+import { SearchBarContainer, Input } from './style'
+import { Button } from '../Button/index'
+import duckduckgoImg from '../../assets/duckduckgo.svg'
 
 export function SearchBar() {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('')
 
   function handleInputChange (event: ChangeEvent<HTMLInputElement>) {
-    setSearch(event.target.value);
+    setSearch(event.target.value)
   }
 
   function handleSearch(e: FormEvent) {
     e.preventDefault()
-    window.open( `https://duckduckgo.com/?q=${search}`, '_blank');
+    window.open( `https://duckduckgo.com/?q=${search}`, '_blank')
   }
 
   return (

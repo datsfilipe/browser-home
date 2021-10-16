@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 const Aside = styled.aside`
   margin-top: 105px;
@@ -12,7 +12,7 @@ const Aside = styled.aside`
   img {
     width: 600px;
   }
-`;
+`
 
 const Main = styled.main`
   align-self: center;
@@ -28,7 +28,7 @@ const Main = styled.main`
   textarea {
     color: ${props => props.theme.dark.text}
   }
-`;
+`
 
 const Categories = styled.div`
   display: flex;
@@ -39,7 +39,7 @@ const Categories = styled.div`
   justify-content: space-around;
 
   gap: 8px;
-`;
+`
 
 const AuthButton = styled.button`
   cursor: pointer;
@@ -77,12 +77,12 @@ const AuthButton = styled.button`
     height: 30px;
     border-radius: 50%;
   }
-`;
+`
 
 const Footer = styled.footer`
   a {
     display: block;
   }
-`;
+`
 
-export { Container, Categories, Main, Aside, Footer, AuthButton };
+export { Container, Categories, Main, Aside, Footer, AuthButton }
