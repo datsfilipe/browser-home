@@ -52,7 +52,8 @@ export function useMenus() {
         }
       }
     }).catch((error) => {
-      console.error(error)
+      notify(error.message, '❗')
+      console.log(error)
     })
   }, [
     menus, user.id
@@ -64,7 +65,6 @@ export function useMenus() {
     const dbRef = ref(database)
     get(child(dbRef, `menus/${authorId}`)).then((snapshot) => {
       if (snapshot.exists()) {
-        console.log('data already exists...')
 
         if (menus.id.length < 1) {
           if (menus != snapshot.val()) {
@@ -100,14 +100,18 @@ export function useMenus() {
         })
       }
     }).catch((error) => {
-      console.error(error)
+      notify(error.message, '❗')
+      console.log(error)
     })
   }
 
   function handleUpdateMenuTitle (authorId: string, menuIndex: number, titleValue: string) {
-    if (authorId.length < 1) return
+    if (authorId.length < 1) {
+      notify('Você precisa efetuar o login para realizar essa ação', '💁')
+      return
+    }
     if (titleValue.length < 1) {
-      notify('Value not accepted', '🙅‍♀️')
+      notify('O valor informado não é aceitável', '🙅‍♀️')
       return
     }
 
@@ -127,15 +131,20 @@ export function useMenus() {
       } else {
         throw new Error('menuIndex value not accepted')
       }
-    } catch(err) {
-      console.error(err)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch(err: any) {
+      notify(err.message, '❗')
+      return
     }
   }
 
   function handleAddMenuItem (authorId: string, menuIndex: number, itemValue: Item) {
-    if (authorId.length < 1) return
+    if (authorId.length < 1) {
+      notify('Você precisa efetuar o login para realizar essa ação', '💁')
+      return
+    }
     if (itemValue.name.length < 1 || itemValue.url.length < 1) {
-      notify('Value not accepted', '🙅‍♀️')
+      notify('O valor informado não é aceitável', '🙅‍♀️')
       return
     }
 
@@ -161,8 +170,10 @@ export function useMenus() {
       } else {
         throw new Error('menuIndex value not accepted')
       }
-    } catch(err) {
-      console.error(err)
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch(err: any) {
+      notify(err.message, '❗')
+      return
     }
   }
 

@@ -19,35 +19,43 @@ export function useAuth () {
 
   const [user, setUser] = useState<User>(defaultUserTemplate)
   const [verify, setVerify] = useState(false)
+  const [alreadyRunning, setAlreadyRunning] = useState(false)
 
   async function signIn () {
     if (user === defaultUserTemplate) {
-      const provider = new GoogleAuthProvider()
+      if (alreadyRunning) return
+      try {
+        const provider = new GoogleAuthProvider()
 
-      const result = await signInWithPopup(auth, provider)
+        setAlreadyRunning(true)
 
-      console.log(result)
+        const result = await signInWithPopup(auth, provider)
 
-      if (result.user) {
-        const { displayName, photoURL, uid } = result.user
+        if (result.user) {
+          const { displayName, photoURL, uid } = result.user
 
-        if (!displayName || !photoURL) {
-          throw new Error('Missing information from Google account')
+          if (!displayName || !photoURL) {
+            throw new Error('Missing information from Google account')
+          }
+
+          setUser({
+            id: uid,
+            name: displayName,
+            avatar: photoURL
+          })
         }
-
-        setUser({
-          id: uid,
-          name: displayName,
-          avatar: photoURL
-        })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (err: any) {
+        notify(err.message, '🚨')
       }
     } else if (verify === false) {
-      notify('Click again to logout from your Google account.', '💤')
+      notify('Clique novamente para sair da conta.', '❗')
       setVerify(true)
     } else {
       await auth.signOut()
       window.location.reload()
     }
+    setTimeout(() => { setAlreadyRunning(false) }, 1000)
   }
 
   useEffect(() => {
