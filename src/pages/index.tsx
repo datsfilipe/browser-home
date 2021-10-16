@@ -50,13 +50,9 @@ const Home: NextPage = () => {
           </Categories>
         </div>
       </Main>
-      {/* <Footer>
-        <a href="">Banner</a>/ with license: <a href="https://creativecommons.org/licenses/by/4.0/">Attribution 4.0 International (CC BY 4.0)</a>
-        <a href="https://iconscout.com/icons/plus" target="_blank">Plus Icon</a> on <a href="https://iconscout.com">Iconscout</a>
-        <a href="https://iconscout.com/icons/account" target="_blank">Account Icon</a> on <a href="https://iconscout.com">Iconscout</a>
-        Dropdown menu icons by <a href="https://iconscout.com/contributors/font-awesome">Font Awesome</a> on <a href="https://iconscout.com">Iconscout</a>
-        <a href="https://iconscout.com/icons/eyedropper" target="_blank">Eyedropper Icon</a> by <a href="https://iconscout.com/contributors/font-awesome" target="_blank">Font Awesome</a>
-      </Footer> */}
+      <Footer>
+        ©️ 2021  <a href="http://localhost:3000"> <strong>Filipe Lima</strong> All Rights Reserved. No content on this site may be copied and reused in any form or fashion without express written permission.</a>
+      </Footer>
     </Container>
   )
 }

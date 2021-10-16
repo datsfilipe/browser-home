@@ -23,5 +23,5 @@
     "quotes": ["error", "single"],
     "semi": ["error", "never"]
   },
-  "ignorePatterns": "node_modules"
+  "ignorePatterns": ["node_modules", "next.config.js"]
 }

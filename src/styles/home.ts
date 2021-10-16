@@ -80,8 +80,26 @@ const AuthButton = styled.button`
 `
 
 const Footer = styled.footer`
+  display: flex;
+  gap: 10px;
+  position: absolute;
+  left: 20px;
+  font-family: Poppins;
+  font-size: .8rem;
+  font-weight: 400;
+  bottom: 10px;
+  opacity: 0.6;
+  color: #fefefe;
+  transition: opacity 300ms;
   a {
     display: block;
+    color: #fefefe;
+  }
+  strong {
+    color: ${props => props.theme.dark.text};
+  }
+  &:hover {
+    opacity: 1;
   }
 `
 
