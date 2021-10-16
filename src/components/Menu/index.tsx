@@ -18,8 +18,6 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
   const [state, setState] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const data = {state, isMounted, props}
-
   function handleClickAway () {
     setState(false);
     setIsMounted(false);
@@ -67,7 +65,9 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
           }
         </div>
         <MenuContent
-          data={data}
+          state={state}
+          isMounted={isMounted}
+          props={props}
         />
       </MenuContainer>
     </ClickAwayListener>

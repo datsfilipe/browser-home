@@ -4,16 +4,10 @@ import plus from '../../assets/plus.svg';
 import { ChangeEvent, HTMLAttributes, useEffect, useState } from 'react';
 import PopupComponent from '../Popup';
 
-type Data = {
-  data: {
-    isMounted: boolean,
-    state: boolean,
-    props: HTMLAttributes<HTMLDivElement>
-  }
-}
-
-export function MenuContent(data: Data, props:  HTMLAttributes<HTMLDivElement>) {
+export function MenuContent(props: {isMounted: boolean, state: boolean, props: HTMLAttributes<HTMLDivElement> }) {
   const [newMenuItemUrl, setNewMenuItemUrl] = useState('')
+  const [listItems, setListItems] = useState<Item[]>([])
+  const { menus } = useMenus()
 
   async function handleInputChangeValue(event: ChangeEvent<HTMLInputElement>) {
     if (event.target.value.trim() === '') return;
