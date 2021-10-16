@@ -23,6 +23,7 @@ const Home: NextPage = () => {
   }, [user.id])
 
   return (
+
     <Container>
       <Head>
         <title>Home page</title>
@@ -51,7 +52,7 @@ const Home: NextPage = () => {
         </div>
       </Main>
       <Footer>
-        ©️ 2021  <a href="http://localhost:3000"> <strong>Filipe Lima</strong> All Rights Reserved. No content on this site may be copied and reused in any form or fashion without express written permission.</a>
+          ©️ 2021, <a href="http://localhost:3000"> <strong>Filipe Lima, </strong> All Rights Reserved.</a>
       </Footer>
     </Container>
   )
