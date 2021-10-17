@@ -19,17 +19,15 @@ export function SearchBar() {
   }
 
   return (
-    <>
-      <SearchBarContainer onSubmit={handleSearch}>
-        <Button className="search-icon" type="submit" >
-          <Image src={duckduckgoImg} alt="DuckDuckGo" width="42" height="42" />
-        </Button>
-        <Input
-          type="text"
-          value={search}
-          onChange={handleInputChange}
-        />
-      </SearchBarContainer>
-    </>
+    <SearchBarContainer onSubmit={handleSearch}>
+      <Button className="search-icon" type="submit" >
+        <Image src={duckduckgoImg} alt="DuckDuckGo" width="42" height="42" />
+      </Button>
+      <Input
+        type="text"
+        value={search}
+        onChange={handleInputChange}
+      />
+    </SearchBarContainer>
   )
 }

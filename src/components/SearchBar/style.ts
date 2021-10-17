@@ -6,8 +6,6 @@ const SearchBarContainer = styled.form`
   justify-content: center;
   flex-direction: row;
 
-  margin-top: 185px;
-
   button {
     div {
       margin: 3px 0 0 1px!important;
@@ -17,8 +15,8 @@ const SearchBarContainer = styled.form`
 
 const Input = styled.input`
   border: none;
-  min-width: 400px;
   outline: none;
+  width: 400px;
   border-radius: 0 15px 15px 0;
   padding-left: 8px;
   padding-right: 8px;
