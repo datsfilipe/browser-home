@@ -100,7 +100,7 @@ export function useMenus() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch(err: any) {
       notify(err.message, '❗')
-      return
+      console.log(err)
     }
   }
 
@@ -139,7 +139,7 @@ export function useMenus() {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch(err: any) {
       notify(err.message, '❗')
-      return
+      console.log(err)
     }
   }
 
