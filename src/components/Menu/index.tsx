@@ -14,27 +14,23 @@ import dropupImg from '../../assets/dropup.svg'
 import editMenuImg from '../../assets/edit-icon.svg'
 
 export function Menu(props: HTMLAttributes<HTMLDivElement>) {
-  const [state, setState] = useState(false)
   const [isMounted, setIsMounted] = useState(false)
 
   function handleClickAway () {
-    setState(false)
     setIsMounted(false)
   }
 
   function handleButtonDropdownClick () {
-    if (state) {
-      setState(false)
+    if (isMounted) {
       setIsMounted(false)
     } else {
-      setState(true)
       setIsMounted(true)
     }
   }
 
   function handleMenuClick () {
-    if (state === false) {
-      setState(true)
+    if (isMounted === false) {
+      setIsMounted(true)
     }
   }
 
@@ -46,7 +42,7 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
     >
       <MenuContainer onClick={handleMenuClick} >
         <Dropdown onClick={handleButtonDropdownClick} >
-          { state ? (
+          { isMounted ? (
             <Image id="dropup-image" src={dropupImg} alt="Minimize Menu" width="24" height="24" />
           ) : (
             <Image id="dropdown-image" src={dropdownImg} alt="Open Menu" width="24" height="24" />
@@ -64,7 +60,6 @@ export function Menu(props: HTMLAttributes<HTMLDivElement>) {
           }
         </div>
         <MenuContent
-          state={state}
           isMounted={isMounted}
           props={props}
         />
