@@ -8,13 +8,13 @@ export default createGlobalStyle`
   }
 
   a {
-    color: ${props => props.theme.dark.text};
+    color: ${props => props.theme.text};
     text-decoration: none;
   }
 
   body {
-    background: ${props => props.theme.dark.background};
-    color: ${props => props.theme.dark.text};
+    background: ${props => props.theme.background};
+    color: ${props => props.theme.text};
     font-family: Roboto;
 
     /* class for applying styles to toggle menu */

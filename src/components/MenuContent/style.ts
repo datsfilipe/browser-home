@@ -3,15 +3,15 @@ import styled from 'styled-components'
 const MenuContentContainer = styled.div`
   display: none;
   position: absolute;
-  top: 110%;
+  top: 120%;
   padding: 32px;
 
-  background-color: ${props => props.theme.dark.primary};
+  background-color: ${props => props.theme.primary};
 
   z-index: 1;
   border-radius: 20px;
 
-  border: 1px solid #44475A75;
+  border: 1px solid ${props => props.theme.border};
 `
 
 const Ul = styled.ul`
@@ -29,13 +29,10 @@ const Ul = styled.ul`
 `
 
 const Li = styled.li`
-  color: ${props => props.theme.dark.text};
   font: 16px 'Poppins', sans-serif;
   font-weight: 500;
 
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
 
   gap: 5px;
 
@@ -44,11 +41,37 @@ const Li = styled.li`
   }
 
   &.list-item {
-    margin-top: 5px;
-    border-bottom: 1px solid #44475A75;
+    padding: 5px;
+    width: 90%;
+    border-bottom: 1px solid ${props => props.theme.border};
+
+    transition: all 250ms;
+
+    &:nth-child(0) {
+      border-top: 1px solid ${props => props.theme.border};
+    }
     &:hover {
       cursor: pointer;
-      border-color: rgba(0,0,0,0.4);
+      border-color: #41414D;
+    }
+
+    .image {
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      right: 12px;
+
+      &:hover {
+        margin-top: -2px;
+      }
+
+      button {
+        border: none;
+        outline: none;
+        background: transparent;
+        cursor: pointer;
+        opacity: 0.8;
+      }
     }
   }
 `
@@ -72,12 +95,12 @@ const Input = styled.input`
   border: none;
   outline: none;
   background-color: transparent;
-  color: ${props => props.theme.dark.text};
+  color: ${props => props.theme.text};
   font: 16px 'Poppins', sans-serif;
   font-weight: 500;
 
   ::placeholder {
-    color: ${props => props.theme.dark.text};
+    color: ${props => props.theme.text};
     opacity: 0.6;
   }
 `

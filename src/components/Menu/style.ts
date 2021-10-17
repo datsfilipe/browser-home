@@ -7,17 +7,18 @@ const MenuContainer = styled.div`
   border-radius: 15px;
 
   position: relative;
-  background-color: ${props => props.theme.dark.primary};
+  background-color: ${props => props.theme.primary};
+  border: 1px solid ${props => props.theme.border};
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   &:active {
-    background-color: #8c75ff;
-    -webkit-box-shadow: inset 0px 0px 5px #6c5ac7;
-    -moz-box-shadow: inset 0px 0px 5px #6c5ac7;
-    box-shadow: inset 0px 0px 5px #6c5ac7;
+    background-color: ${props => props.theme.border};
+    -webkit-box-shadow: inset 0px 0px 5px ${props => props.theme.border};
+    -moz-box-shadow: inset 0px 0px 5px ${props => props.theme.border};
+    box-shadow: inset 0px 0px 5px ${props => props.theme.border};
     outline: none;
     transition: all 300ms;
   }
@@ -61,7 +62,7 @@ const Span = styled.span`
   padding: 0 100px;
   font: 18px 'Poppins', sans-serif;
   font-weight: 700;
-  color: ${props => props.theme.dark.text};
+  color: ${props => props.theme.text};
 `
 
 export {Span, MenuContainer, Dropdown, EditButton}

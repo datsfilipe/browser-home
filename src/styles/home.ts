@@ -8,10 +8,7 @@ const Container = styled.div`
 const Aside = styled.aside`
   margin-top: 105px;
   flex: 1;
-
-  img {
-    width: 600px;
-  }
+  max-width: 600px;
 `
 
 const Main = styled.main`
@@ -26,13 +23,12 @@ const Main = styled.main`
   }
 
   textarea {
-    color: ${props => props.theme.dark.text}
+    color: ${props => props.theme.text}
   }
 `
 
 const Categories = styled.div`
   display: flex;
-  min-width: 700px;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
@@ -50,11 +46,11 @@ const AuthButton = styled.button`
   top: 30px;
   right: 30px;
 
-  border: 1px solid #141414;
+  border: 1px solid ${props => props.theme.border};
   border-radius: 50px;
-  background-color: #44475A75;
+  background-color: ${props => props.theme.primary};
   font: 14px "Poppins";
-  color: ${props => props.theme.dark.text};
+  color: ${props => props.theme.text};
 
   display: flex;
   align-items: center;
@@ -89,14 +85,14 @@ const Footer = styled.footer`
   font-weight: 400;
   bottom: 10px;
   opacity: 0.6;
-  color: #fefefe;
+  color: ${props => props.theme.textSecondary};
   transition: opacity 300ms;
   a {
     display: block;
-    color: #fefefe;
+    color: ${props => props.theme.textSecondary};
   }
   strong {
-    color: ${props => props.theme.dark.text};
+    color: ${props => props.theme.text};
   }
   &:hover {
     opacity: 1;

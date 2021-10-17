@@ -4,8 +4,8 @@ const Modal = styled.div`
   font-size: 12px;
   height: 200px;
   width: 300px;
-  background-color: #252131;
-  border: 1px solid #44475A75;
+  background-color: ${props => props.theme.primary};
+  border: 1px solid ${props => props.theme.border};
   border-radius: 15px;
   padding: 15px;
   display: flex;
@@ -15,10 +15,10 @@ const Modal = styled.div`
 
 const Header = styled.div`
   width: 100%;
-  border-bottom: 1px solid #44475A75;
+  border-bottom: 1px solid ${props => props.theme.border};
   font-size: 18px;
   font-family: Poppins, sans-serif;
-  color: ${props => props.theme.dark.text};
+  color: ${props => props.theme.text};
   text-align: center;
   padding: 5px;
 `
@@ -28,7 +28,7 @@ const ModalContent = styled.div`
   padding: 10px 5px;
   font-size: 16px;
   text-align: center;
-  color: #fefefe;
+  color: ${props => props.theme.textSecondary};
 `
 
 const Input = styled.input`
@@ -57,23 +57,7 @@ const ModalActions = styled.div`
 `
 
 const CloseButton = styled.button`
-  cursor: pointer;
-  position: absolute;
-  outline: none;
-  display: block;
-  padding: 2px 5px;
-  line-height: 20px;
-  right: -10px;
-  top: -10px;
-  font-size: 24px;
-  background: #44475a;
-  border-radius: 18px;
-  border: 1px solid #313131;
-  transition: all 250ms;
-
-  &:hover {
-    background: #41414D;
-  }
+  display: none;
 `
 
 const Button = styled.button`
@@ -82,7 +66,7 @@ const Button = styled.button`
   min-width: 80px;
   border-radius: 8px;
   font-family: Poppins, sans-serif;
-  color: ${props => props.theme.dark.text};
+  color: ${props => props.theme.text};
   background-color: #44475a;
   padding: 6px;
   margin-top: 10px;
