@@ -10,8 +10,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
+    "ansi-regex": "^6.0.1",
     "firebase": "^9.0.2",
-    "next": "11.1.0",
+    "next": "^11.1.2",
     "react": "17.0.2",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^17.0.2",
