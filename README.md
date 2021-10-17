@@ -2,7 +2,7 @@
 Better Home Page
 </h1>
 
-<p align="center">Deployed <a href="">here</a>.</p>
+<p align="center">Deployed <a href="https://browser-home.vercel.app/">here</a>.</p>
 
 <p align="center">
   <a href="https://github.com/datsfilipe/browser-home/graphs/contributors">
