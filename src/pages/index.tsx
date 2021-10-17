@@ -5,9 +5,9 @@ import Image from 'next/image'
 import React, { useEffect } from 'react'
 
 import { useToast } from '../hooks/useToast'
-import { Container, Main, Categories, Aside, Footer, AuthButton } from '../styles/home'
-import { Menu } from '../components/Menu/index'
-import { Form } from '../components/Form/index'
+import { Container, Main, Categories, Aside, AuthButton } from '../styles/home'
+import { Menu } from '../components/Menu'
+import { SearchBar } from '../components/SearchBar'
 import { useMenus } from '../hooks/useMenus'
 import{ useAuth } from '../hooks/useAuth'
 
@@ -27,6 +27,8 @@ const Home: NextPage = () => {
     <Container>
       <Head>
         <title>Home page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+        <link rel="icon" href="app-icon.svg" />
       </Head>
       <Main>
         <AuthButton onClick={() => signIn()}>
@@ -43,7 +45,7 @@ const Home: NextPage = () => {
           <Image src={supportImg} alt="Banner" />
         </Aside>
         <div id="container">
-          <Form />
+          <SearchBar />
           <Categories>
             <Menu title={menus.first_menu.title} />
             <Menu title={menus.second_menu.title} />
@@ -51,9 +53,9 @@ const Home: NextPage = () => {
           </Categories>
         </div>
       </Main>
-      <Footer>
-          ©️ 2021, <a href="http://localhost:3000"> <strong>Filipe Lima, </strong> All Rights Reserved.</a>
-      </Footer>
+      <footer>
+        Copyright <a href="https://opensource.org/licenses/BSD-3-Clause" target="_blank" rel="noopener noreferrer">&copy; 2021, <strong>Filipe Lima</strong>, all rights reserved.</a>
+      </footer>
     </Container>
   )
 }
