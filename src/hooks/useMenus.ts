@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { v4 as uuid} from 'uuid'
 import { Menus } from '../types/menus'
 import { database } from '../services/firebase'
-import { ref, set, get, child } from '@firebase/database'
+import { ref, set, get, child, remove, onValue } from '@firebase/database'
 import { useAuth } from '../hooks/useAuth'
 import { useToast } from '../hooks/useToast'
 import { Item } from '../types/item'
@@ -28,28 +28,12 @@ export function useMenus() {
   const [menus, setMenus] = useState<Menus>(defaultMenusTemplate)
 
   useEffect(() => {
-    if (user.id.length < 1) return
+    if (user.id.trim() === '') return
 
     const dbRef = ref(database)
     get(child(dbRef, `menus/${user.id}`)).then((snapshot) => {
       if (snapshot.exists()) {
-        if (menus != snapshot.val()) {
-          setMenus({
-            id: snapshot.child('id').val(),
-            first_menu: {
-              title: snapshot.child('first_menu').child('title').val(),
-              items: snapshot.child('first_menu').child('items').val(),
-            },
-            second_menu: {
-              title: snapshot.child('second_menu').child('title').val(),
-              items: snapshot.child('second_menu').child('items').val(),
-            },
-            third_menu: {
-              title: snapshot.child('third_menu').child('title').val(),
-              items: snapshot.child('third_menu').child('items').val(),
-            },
-          })
-        }
+        setMenus(snapshot.val())
       }
     }).catch((error) => {
       notify(error.message, '❗')
@@ -60,31 +44,13 @@ export function useMenus() {
   ])
 
   function handleCreateMenus (authorId: string) {
-    if (authorId.length < 1) return
+    if (authorId.trim() === '') return
 
     const dbRef = ref(database)
     get(child(dbRef, `menus/${authorId}`)).then((snapshot) => {
       if (snapshot.exists()) {
-
-        if (menus.id.length < 1) {
-          if (menus != snapshot.val()) {
-            setMenus({
-              id: snapshot.child('id').val(),
-              first_menu: {
-                title: snapshot.child('first_menu').child('title').val(),
-                items: snapshot.child('first_menu').child('items').val(),
-              },
-              second_menu: {
-                title: snapshot.child('second_menu').child('title').val(),
-                items: snapshot.child('second_menu').child('items').val(),
-              },
-              third_menu: {
-                title: snapshot.child('third_menu').child('title').val(),
-                items: snapshot.child('third_menu').child('items').val(),
-              },
-            })
-          }
-        }
+        if (menus.id === snapshot.child('id').val()) return
+        setMenus(snapshot.val())
       } else {
         set(ref(database, 'menus/' + authorId), {
           id: uuid(),
@@ -106,7 +72,7 @@ export function useMenus() {
   }
 
   function handleUpdateMenuTitle (authorId: string, menuIndex: number, titleValue: string) {
-    if (authorId.length < 1) {
+    if (authorId.trim() === '') {
       notify('Você precisa efetuar o login para realizar essa ação', '💁')
       return
     }
@@ -139,7 +105,7 @@ export function useMenus() {
   }
 
   function handleAddMenuItem (authorId: string, menuIndex: number, itemValue: Item) {
-    if (authorId.length < 1) {
+    if (authorId.trim() === '') {
       notify('Você precisa efetuar o login para realizar essa ação', '💁')
       return
     }
@@ -177,7 +143,56 @@ export function useMenus() {
     }
   }
 
-  const value = { menus, handleUpdateMenuTitle, handleCreateMenus, handleAddMenuItem }
+  function handleRemoveMenuItem (id: string, authorId: string, menuIndex: number | undefined) {
+    if (menuIndex === 0) {
+      onValue(ref(database, 'menus/' + authorId + '/first_menu' + '/items'), (snapshot) => {
+        snapshot.forEach(item => {
+          if (item.child('id').val() === id) {
+            try {
+              remove(ref(database, `menus/${authorId}/first_menu/items/${item.key}`))
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (err: any) {
+              notify(err.message, '❗')
+              console.log(err)
+            }
+          }
+        })
+      })
+    }
+    else if (menuIndex === 1) {
+      onValue(ref(database, 'menus/' + authorId + '/second_menu' + '/items'), (snapshot) => {
+        snapshot.forEach(item => {
+          if (item.child('id').val() === id) {
+            try {
+              remove(ref(database, `menus/${authorId}/second_menu/items/${item.key}`))
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (err: any) {
+              notify(err.message, '❗')
+              console.log(err)
+            }
+          }
+        })
+      })
+    } else if (menuIndex === 2) {
+      onValue(ref(database, 'menus/' + authorId + '/third_menu' + '/items'), (snapshot) => {
+        snapshot.forEach(item => {
+          if (item.child('id').val() === id) {
+            try {
+              remove(ref(database, `menus/${authorId}/third_menu/items/${item.key}`))
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } catch (err: any) {
+              notify(err.message, '❗')
+              console.log(err)
+            }
+          }
+        })
+      })
+    } else {
+      throw new Error('Could not resolve menu index')
+    }
+  }
+
+  const value = { menus, handleUpdateMenuTitle, handleCreateMenus, handleAddMenuItem, handleRemoveMenuItem }
 
   return value
 }

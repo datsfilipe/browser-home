@@ -1,16 +1,24 @@
-import { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content } from './style'
 import Image from 'next/image'
-import plus from '../../assets/plus.svg'
+
 import React, { ChangeEvent, HTMLAttributes, useEffect, useState } from 'react'
+
 import PopupComponent from '../Popup'
-import { useMenus } from '../../hooks/useMenus'
-import { Item } from '../../types/item'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-export function MenuContent(props: {isMounted: boolean, state: boolean, props: HTMLAttributes<HTMLDivElement> }) {
+import { MenuContentContainer, Ul, Li, ButtonAdd, Input, Content } from './style'
+import { useMenus } from '../../hooks/useMenus'
+import { useAuth } from '../../hooks/useAuth'
+import { Item } from '../../types/item'
+import plus from '../../assets/plus.svg'
+import trash from '../../assets/trash.svg'
+
+export function MenuContent(props: {isMounted: boolean, props: HTMLAttributes<HTMLDivElement> }) {
   const [newMenuItemUrl, setNewMenuItemUrl] = useState('')
   const [listItems, setListItems] = useState<Item[]>([])
-  const { menus } = useMenus()
+  const [menuIndex, setMenuIndex] = useState<number>()
+
+  const { menus, handleRemoveMenuItem } = useMenus()
+  const { user } = useAuth()
 
   async function handleInputChangeValue(event: ChangeEvent<HTMLInputElement>) {
     if (event.target.value.trim() === '') return
@@ -24,20 +32,29 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
     if (props.props.title === menus.first_menu.title) {
       if (menus.first_menu.items) {
         setListItems(Object.values(menus.first_menu.items))
+        setMenuIndex(0)
+      } else {
+        setListItems([])
       }
     } else if (props.props.title === menus.second_menu.title) {
       if (menus.second_menu.items) {
         setListItems(Object.values(menus.second_menu.items))
+        setMenuIndex(1)
+      } else {
+        setListItems([])
       }
     } else {
       if (menus.third_menu.items) {
         setListItems(Object.values(menus.third_menu.items))
+        setMenuIndex(2)
+      } else {
+        setListItems([])
       }
     }
-  }, [menus.first_menu.items, menus.second_menu.items, menus.third_menu.items])
+  }, [menus])
 
   return (
-    <MenuContentContainer className={`${props.state ? 'show' :  ''}`} {...props}>
+    <MenuContentContainer className={`${props.isMounted ? 'show' :  ''}`} {...props}>
       <Scrollbars
         style={{ width: 260 }}
         universal
@@ -73,6 +90,11 @@ export function MenuContent(props: {isMounted: boolean, state: boolean, props: H
             return (
               <Li className="list-item" key={item.id}>
                 <a href={item.url} target="_blank" rel="noopener noreferrer">{item.name}</a>
+                <div className="image">
+                  <button onClick={() => handleRemoveMenuItem(item.id, user.id, menuIndex)}>
+                    <Image src={trash} alt="Remover item" />
+                  </button>
+                </div>
               </Li>
             )
           }): <></>}
