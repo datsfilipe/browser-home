@@ -16,12 +16,12 @@ export function PopupComponent (props: {
   menuTitle: string | undefined;
   menuItemUrl?: string;
 }) {
+  const [newValue, setNewValue] = useState('')
+  const [menuIndex, setMenuIndex] = useState<number>(0)
+
   const { user } = useAuth()
   const { menus, handleUpdateMenuTitle, handleAddMenuItem } = useMenus()
   const { notify } = useToast()
-
-  const [newValue, setNewValue] = useState('')
-  const [menuIndex, setMenuIndex] = useState<number>(0)
 
   function handleInputChange (event: ChangeEvent<HTMLInputElement>) {
     setNewValue(event.target.value)
