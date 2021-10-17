@@ -3,6 +3,127 @@ import styled from 'styled-components'
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+
+  footer {
+    position: -webkit-sticky;
+    display: block;
+    align-self: flex-end;
+    padding: 12px;
+    color: ${props => props.theme.textSecondary};
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+
+    strong {
+      font-weight: 400;
+      color: ${props => props.theme.text};
+    }
+
+    a {
+      color: ${props => props.theme.textSecondary};
+    }
+  }
+
+
+  @media (max-width: 1100px) {
+    main {
+      gap: 50px;
+      justify-content: center;
+      margin-top: 0;
+
+      aside {
+        margin-top: 20%;
+        max-width: 350px;
+      }
+
+      #container {
+        max-width: 350px;
+      }
+    }
+  }
+  @media (max-width: 900px) {
+    main {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+
+      aside {
+        margin-top: 20%;
+      }
+
+      #container {
+        margin-top: 5%;
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    main {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+
+      aside {
+        margin-top: 10%;
+      }
+
+      #container {
+        margin-top: 15%;
+
+        [class*="SearchBarContainer-"] {
+          height: 50px;
+          input {
+            width: 280px;
+          }
+          button {
+            div {
+              height: 34px;
+            }
+          }
+        }
+        [class*="Categories-"] {
+          [class*="MenuContainer-"] {
+            span {
+              padding: 0 80px;
+            }
+          }
+        }
+      }
+    }
+  }
+  @media (max-width: 400px) {
+    main {
+      margin-top: 20%;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+
+      aside {
+        margin-top: 70px;
+      }
+
+      #container {
+        margin-top: 10%;
+
+        [class*="SearchBarContainer-"] {
+          height: 40px;
+          input {
+            width: 230px;
+          }
+          button {
+            div {
+              height: 34px;
+            }
+          }
+        }
+        [class*="Categories-"] {
+          [class*="MenuContainer-"] {
+            span {
+              padding: 0 50px;
+            }
+          }
+        }
+      }
+    }
+  }
 `
 
 const Aside = styled.aside`
@@ -16,10 +137,12 @@ const Main = styled.main`
   display: flex;
 
   width: 80vw;
-  height: 100vh;
+  min-height: 90vh;
+  padding-bottom: 30px;
 
   #container {
     flex: 1;
+    margin-top: 18%;
   }
 
   textarea {
@@ -43,6 +166,7 @@ const AuthButton = styled.button`
 
   height: 48px;
   max-width: 90px;
+  height: 45px;
   top: 30px;
   right: 30px;
 
@@ -75,28 +199,4 @@ const AuthButton = styled.button`
   }
 `
 
-const Footer = styled.footer`
-  display: flex;
-  gap: 10px;
-  position: absolute;
-  left: 20px;
-  font-family: Poppins;
-  font-size: .8rem;
-  font-weight: 400;
-  bottom: 10px;
-  opacity: 0.6;
-  color: ${props => props.theme.textSecondary};
-  transition: opacity 300ms;
-  a {
-    display: block;
-    color: ${props => props.theme.textSecondary};
-  }
-  strong {
-    color: ${props => props.theme.text};
-  }
-  &:hover {
-    opacity: 1;
-  }
-`
-
-export { Container, Categories, Main, Aside, Footer, AuthButton }
+export { Container, Categories, Main, Aside, AuthButton }
